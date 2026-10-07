@@ -1,0 +1,72 @@
+@media print {
+  @page {
+    size: 16:9 landscape;
+    margin: 0;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    background: #fff;
+    color: #111827;
+  }
+
+  .deck-progress,
+  .deck-nav,
+  .deck-overview {
+    display: none !important;
+  }
+
+  .deck-stage {
+    padding: 0;
+    display: block;
+    height: auto;
+  }
+
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    aspect-ratio: auto;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: #fff;
+    color: #111827;
+    page-break-after: always;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    animation: none;
+  }
+
+  .slide:last-child {
+    page-break-after: avoid;
+  }
+
+  .slide-header,
+  .slide-content,
+  .slide-footer {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  .slide-content {
+    overflow: visible;
+  }
+
+  .card,
+  .table,
+  .table th,
+  .table td {
+    border-color: #cbd5f5;
+  }
+
+  .table th {
+    background: #f1f5f9;
+  }
+
+  .diagram-wrap svg {
+    max-height: 78vh;
+  }
+}

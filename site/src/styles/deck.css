@@ -1,0 +1,308 @@
+:root {
+  --bg: #0f1026;
+  --fg: #f8fafc;
+  --card: #1f2937;
+  --accent: #3b82f6;
+  --muted: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: radial-gradient(1200px 800px at 50% 0%, #1e293b, #0f1026);
+  color: var(--fg);
+  line-height: 1.7;
+}
+
+.deck-root {
+  position: relative;
+  min-height: 100dvh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.deck-stage {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(8px, 2vw, 24px);
+  perspective: 1400px;
+}
+
+.slide {
+  width: min(1600px, 96vw);
+  aspect-ratio: 16 / 9;
+  background: radial-gradient(600px 400px at 10% -10%, rgba(59, 130, 246, 0.25), transparent 70%),
+    linear-gradient(180deg, #1f293b 0%, #111827 100%);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 14px;
+  box-shadow: 0 60px 120px -80px rgba(59, 130, 246, 0.9);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideFade 220ms ease;
+  will-change: opacity, transform;
+}
+
+.slide-header {
+  padding: clamp(12px, 2vw, 28px) clamp(16px, 4vw, 56px) 0;
+}
+
+.slide-title {
+  margin: 0;
+  font-size: clamp(16px, 3.2vw, 44px);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.slide-content {
+  flex: 1;
+  padding: clamp(10px, 1.8vw, 22px) clamp(16px, 4vw, 56px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.6vw, 18px);
+  overflow: auto;
+  scrollbar-gutter: stable;
+}
+
+.slide-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.slide-content::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 10px;
+}
+
+.slide-content > *:first-child {
+  margin-top: 0;
+}
+
+.slide-content > *:last-child {
+  margin-bottom: 0;
+}
+
+.slide-footer {
+  padding: 0 clamp(16px, 4vw, 56px) clamp(10px, 1.6vw, 18px);
+  display: flex;
+  justify-content: flex-end;
+  color: var(--muted);
+  font-size: clamp(10px, 1vw, 14px);
+}
+
+.slide-content p {
+  margin: 0;
+  font-size: clamp(12px, 1.6vw, 20px);
+}
+
+.slide-content ul,
+.slide-content ol {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1vw, 10px);
+  padding-left: clamp(18px, 2.6vw, 28px);
+}
+
+.slide-content li {
+  font-size: clamp(12px, 1.6vw, 20px);
+}
+
+.slide-content strong {
+  font-weight: 600;
+}
+
+.slide-content em {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.grid-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(10px, 2vw, 24px);
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.16), rgba(15, 23, 42, 0.4));
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 12px;
+  padding: clamp(10px, 1.8vw, 18px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1vw, 10px);
+}
+
+.card h2 {
+  margin: 0;
+  font-size: clamp(14px, 2vw, 26px);
+}
+
+.card p,
+.card li {
+  font-size: clamp(11px, 1.4vw, 18px);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: clamp(11px, 1.4vw, 18px);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table th,
+.table td {
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  padding: clamp(6px, 1.2vw, 12px);
+  text-align: left;
+  vertical-align: top;
+}
+
+.table th {
+  background: rgba(59, 130, 246, 0.25);
+  font-weight: 600;
+}
+
+.table tbody tr:nth-child(even) {
+  background: rgba(148, 163, 184, 0.08);
+}
+
+.diagram-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(4px, 1vw, 12px);
+}
+
+.diagram-wrap svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.deck-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent) var(--p, 0%), rgba(148, 163, 184, 0.25) var(--p, 0%));
+  transition: background 160ms ease;
+  z-index: 6;
+}
+
+.deck-nav {
+  position: fixed;
+  inset: auto 0 14px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.deck-nav button {
+  pointer-events: all;
+  appearance: none;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.25), rgba(15, 23, 42, 0.6));
+  color: var(--fg);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: clamp(11px, 1vw, 14px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+
+.deck-nav button[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.deck-overview {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(12px, 4vw, 48px);
+  background: radial-gradient(1200px 800px at 50% 0%, rgba(30, 41, 59, 0.96), rgba(15, 16, 38, 0.98));
+  z-index: 7;
+  overflow: auto;
+}
+
+.deck-overview.is-open {
+  display: flex;
+}
+
+.overview-grid {
+  width: min(1400px, 96vw);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(10px, 2vw, 18px);
+}
+
+.overview-card {
+  appearance: none;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.14), rgba(15, 23, 42, 0.5));
+  color: var(--fg);
+  border-radius: 12px;
+  padding: clamp(10px, 1.6vw, 16px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.overview-card.is-active {
+  border-color: rgba(59, 130, 246, 0.9);
+  box-shadow: 0 30px 60px -40px rgba(59, 130, 246, 0.9);
+}
+
+.overview-id {
+  color: var(--muted);
+  font-size: clamp(10px, 1vw, 13px);
+}
+
+.overview-title {
+  font-size: clamp(12px, 1.6vw, 18px);
+}
+
+@keyframes slideFade {
+  from {
+    opacity: 0.6;
+    transform: translateY(6px) rotateX(4deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide {
+    animation: none;
+  }
+}
