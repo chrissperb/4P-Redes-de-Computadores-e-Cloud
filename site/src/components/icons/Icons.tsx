@@ -69,3 +69,11 @@ export const AccessibilityIcon: React.FC<IconProps> = ({ size = 16 }) => (
     <path d="M12 9.4v5.2M12 11.4l-4.2 1.9M12 11.4l4.2 1.9M12 14.6l-3.1 3.6M12 14.6l3.1 3.6" />
   </svg>
 );
+
+export const HomeIcon: React.FC<IconProps> = ({ size = 16 }) => (
+  <svg {...base} width={size} height={size}>
+    <path d="M3 10.5L12 3l9 7.5" />
+    <path d="M5 9.5V21h14V9.5" />
+    <path d="M9 21v-6h6v6" />
+  </svg>
+);

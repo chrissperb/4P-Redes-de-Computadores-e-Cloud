@@ -36,6 +36,7 @@ interface LayoutProps {
   accessOpen: boolean;
   onToggleAccessPanel: () => void;
   onCloseAccessPanel: () => void;
+  onHome: () => void;
   hc: boolean;
   onToggleHc: () => void;
   textScale: TextScale;
@@ -71,6 +72,7 @@ export const Layout: React.FC<LayoutProps> = ({
   accessOpen,
   onToggleAccessPanel,
   onCloseAccessPanel,
+  onHome,
   hc,
   onToggleHc,
   textScale,
@@ -209,6 +211,7 @@ export const Layout: React.FC<LayoutProps> = ({
         <AccessibilityPanel
           open={accessOpen}
           onClose={onCloseAccessPanel}
+          onHome={onHome}
           hc={hc}
           onToggleHc={onToggleHc}
           textScale={textScale}

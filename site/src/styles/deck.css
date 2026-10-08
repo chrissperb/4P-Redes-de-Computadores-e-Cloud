@@ -707,6 +707,12 @@ kbd {
   flex-wrap: wrap;
 }
 
+.access-actions {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .access-title {
   margin: 0;
   font-size: clamp(16px, 2.2vw, 26px);
