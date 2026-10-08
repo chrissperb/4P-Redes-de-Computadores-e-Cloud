@@ -17,9 +17,6 @@ export const Slide02_Roteiro: React.FC = () => {
           <li>LGPD – Princípios Aplicados à Solução</li>
           <li>Benefícios, Aspectos Econômicos, Conclusão e Referências</li>
         </ol>
-        <p style={{ color: 'var(--muted)', fontSize: 'clamp(11px,1.4vw,16px)' }}>
-          Navegação: ← → Espaço/PgDown/PgUp • Home/End • O (Visão Geral) • F (Tela cheia)
-        </p>
       </div>
     </SlideShell>
   );
