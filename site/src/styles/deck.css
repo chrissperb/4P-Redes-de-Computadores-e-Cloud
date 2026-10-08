@@ -80,7 +80,7 @@ body {
 }
 
 .slide {
-  width: min(1600px, 96vw);
+  width: min(1600px, 96vw, calc((100dvh - 120px) * 16 / 9));
   aspect-ratio: 16 / 9;
   background:
     radial-gradient(600px 400px at 10% -10%, var(--accent-soft), transparent 70%),
@@ -157,6 +157,7 @@ body {
   gap: clamp(10px, 1.6vw, 18px);
   overflow: auto;
   scrollbar-gutter: stable;
+  container-type: inline-size;
 }
 
 .slide-content::-webkit-scrollbar {
@@ -248,10 +249,10 @@ body {
   border: 1px solid var(--border);
   border-top: 2px solid var(--accent);
   border-radius: 12px;
-  padding: clamp(12px, 1.8vw, 20px);
+  padding: clamp(10px, 1.4vw, 16px);
   display: flex;
   flex-direction: column;
-  gap: clamp(8px, 1vw, 12px);
+  gap: clamp(6px, 0.8vw, 10px);
 }
 
 .phase-head {
@@ -289,11 +290,12 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: clamp(6px, 0.8vw, 10px);
+  gap: clamp(4px, 0.5vw, 8px);
 }
 
 .phase-card .phase-item {
   font-size: clamp(12px, 1.4vw, 18px);
+  line-height: 1.5;
   display: flex;
   align-items: flex-start;
   gap: clamp(8px, 1vw, 12px);
@@ -312,6 +314,14 @@ body {
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   margin-top: 1px;
+}
+
+/* Slide estreito (viewport baixo): 1 coluna — itens em linha única, grid cabe
+   sem scroll vertical. Acima do limite volta 2×2 (largos o suficiente). */
+@container (max-width: 1000px) {
+  .phase-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .card {
