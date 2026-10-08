@@ -234,6 +234,86 @@ body {
   gap: clamp(10px, 2vw, 24px);
 }
 
+/* Roteiro (slide 2): fases em cards 2×2 */
+.phase-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(10px, 1.6vw, 18px);
+  align-content: center;
+}
+
+.phase-card {
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.14), rgba(15, 23, 42, 0.35));
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: 12px;
+  padding: clamp(12px, 1.8vw, 20px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1vw, 12px);
+}
+
+.phase-head {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(8px, 1vw, 12px);
+  flex-wrap: wrap;
+}
+
+.phase-step {
+  flex: 0 0 auto;
+  font-size: clamp(9px, 0.9vw, 12px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold);
+  background: var(--gold-soft);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: clamp(1px, 0.3vw, 4px) clamp(8px, 1vw, 12px);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.phase-title {
+  margin: 0;
+  font-size: clamp(14px, 2vw, 24px);
+  font-weight: 600;
+  color: #fde68a;
+  letter-spacing: -0.01em;
+}
+
+.phase-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 0.8vw, 10px);
+}
+
+.phase-item {
+  font-size: clamp(12px, 1.4vw, 18px);
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(8px, 1vw, 12px);
+}
+
+.phase-num {
+  flex: 0 0 auto;
+  min-width: clamp(18px, 1.6vw, 24px);
+  height: clamp(18px, 1.6vw, 24px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  color: var(--gold);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  margin-top: 1px;
+}
+
 .card {
   background: linear-gradient(180deg, rgba(148, 163, 184, 0.14), rgba(15, 23, 42, 0.35));
   border: 1px solid var(--border);
@@ -452,11 +532,13 @@ body {
   color: #94a3b8;
 }
 
-[data-theme='light'] .card {
+[data-theme='light'] .card,
+[data-theme='light'] .phase-card {
   background: linear-gradient(180deg, rgba(226, 232, 240, 0.6), rgba(255, 255, 255, 0.75));
 }
 
-[data-theme='light'] .card h2 {
+[data-theme='light'] .card h2,
+[data-theme='light'] .phase-title {
   color: #92400e;
 }
 
@@ -929,6 +1011,7 @@ kbd {
 
 [data-hc='on'] .slide-content strong,
 [data-hc='on'] .card h2,
+[data-hc='on'] .phase-title,
 [data-hc='on'] .table th,
 [data-hc='on'] .slide-kicker,
 [data-hc='on'] .access-section h3,
@@ -942,7 +1025,8 @@ kbd {
   color: #fff;
 }
 
-[data-hc='on'] .card {
+[data-hc='on'] .card,
+[data-hc='on'] .phase-card {
   background: #000;
   border: 2px solid #fff;
 }
@@ -1039,6 +1123,7 @@ kbd {
   border-bottom: 1px solid #fff;
 }
 
+[data-hc='on'] .phase-num,
 [data-hc='on'] .shortcut-action,
 [data-hc='on'] .switch-hint,
 [data-hc='on'] .sr-status,
