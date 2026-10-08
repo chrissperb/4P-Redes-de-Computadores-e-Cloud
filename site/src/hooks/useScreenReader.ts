@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export type ScreenReaderStatus = 'idle' | 'speaking' | 'paused' | 'unavailable';
 
@@ -15,6 +15,13 @@ function pickPtVoice(speech: SpeechSynthesis): SpeechSynthesisVoice | undefined 
 export function useScreenReader() {
   const supported = typeof window !== 'undefined' && 'speechSynthesis' in window;
   const [status, setStatus] = useState<ScreenReaderStatus>(supported ? 'idle' : 'unavailable');
+  // Authoritative state for timers/polling closures (they would otherwise
+  // capture a stale status).
+  const statusRef = useRef<ScreenReaderStatus>(status);
+  statusRef.current = status;
+  // Last spoken utterance: async end/error events from a *cancelled* older
+  // utterance must not overwrite the current state.
+  const spokenRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   useEffect(() => {
     if (!supported) {
@@ -28,10 +35,14 @@ export function useScreenReader() {
     };
     speechSynthesis.addEventListener('voiceschanged', onVoicesChanged);
 
+    // Safety net only: detect natural end of speech. Never derive "paused"
+    // from Chrome's flaky paused flag — pause/resume state is tracked in
+    // this hook via explicit user actions. Only auto-clear from "speaking"
+    // so a flickering `speaking` flag can't kill a "paused" state.
     const poll = window.setInterval(() => {
-      const s = speechSynthesis;
-      if (s.speaking) setStatus(s.paused ? 'paused' : 'speaking');
-      else setStatus('idle');
+      if (!speechSynthesis.speaking && statusRef.current === 'speaking') {
+        setStatus('idle');
+      }
     }, 200);
 
     return () => {
@@ -57,23 +68,36 @@ export function useScreenReader() {
       if (!text) return;
       speechSynthesis.cancel();
       const utter = new SpeechSynthesisUtterance(text);
+      spokenRef.current = utter;
       utter.lang = 'pt-BR';
       const voice = pickPtVoice(speechSynthesis);
       if (voice) utter.voice = voice;
       utter.rate = 0.95;
-      utter.onend = () => setStatus('idle');
-      utter.onerror = () => setStatus('idle');
+      const isCurrent = () => spokenRef.current === utter;
+      utter.onend = () => {
+        if (isCurrent()) setStatus('idle');
+      };
+      utter.onerror = () => {
+        if (isCurrent()) setStatus('idle');
+      };
       speechSynthesis.speak(utter);
+      setStatus('speaking');
     },
     [supported, getSlideText],
   );
 
   const pause = useCallback(() => {
-    if (supported) speechSynthesis.pause();
+    if (!supported) return;
+    speechSynthesis.pause();
+    setStatus('paused');
   }, [supported]);
 
   const resume = useCallback(() => {
-    if (supported) speechSynthesis.resume();
+    if (!supported) return;
+    // Chrome: resume() while not paused is a no-op; still mark speaking so the
+    // UI reacts to the user's intent.
+    speechSynthesis.resume();
+    setStatus('speaking');
   }, [supported]);
 
   const stop = useCallback(() => {
