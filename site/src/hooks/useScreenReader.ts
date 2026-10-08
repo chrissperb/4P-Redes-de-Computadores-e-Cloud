@@ -61,6 +61,8 @@ export function useScreenReader() {
       const voice = pickPtVoice(speechSynthesis);
       if (voice) utter.voice = voice;
       utter.rate = 0.95;
+      utter.onend = () => setStatus('idle');
+      utter.onerror = () => setStatus('idle');
       speechSynthesis.speak(utter);
     },
     [supported, getSlideText],
@@ -75,7 +77,22 @@ export function useScreenReader() {
   }, [supported]);
 
   const stop = useCallback(() => {
-    if (supported) speechSynthesis.cancel();
+    if (!supported) return;
+    const s = speechSynthesis;
+    // Chrome no-op: cancel() while paused does nothing.
+    if (s.paused) s.resume();
+    s.cancel();
+    // Chrome bug (crbug/509488): cancel() may fail to interrupt an
+    // in-flight utterance. Flush the queue with a silent utterance,
+    // then cancel again to force the end of speech.
+    if (s.speaking || s.pending) {
+      const flush = new SpeechSynthesisUtterance('');
+      flush.volume = 0;
+      flush.rate = 1;
+      s.speak(flush);
+      s.cancel();
+    }
+    setStatus('idle');
   }, [supported]);
 
   return { supported, status, speak, pause, resume, stop };
