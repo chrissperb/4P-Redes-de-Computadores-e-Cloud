@@ -14,7 +14,8 @@
 
   .deck-progress,
   .deck-nav,
-  .deck-overview {
+  .deck-overview,
+  .deck-help {
     display: none !important;
   }
 

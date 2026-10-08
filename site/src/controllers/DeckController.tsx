@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { slidesData } from '../data/slidesData';
 import { useHashSync } from '../hooks/useHashSync';
 import { useKeyboardNav } from '../hooks/useKeyboardNav';
+import { useTheme } from '../hooks/useTheme';
 import { Layout } from '../views/layout/Layout';
 import { Slide01_Capa } from '../views/slides/Slide01_Capa';
 import { Slide02_Roteiro } from '../views/slides/Slide02_Roteiro';
@@ -66,10 +67,28 @@ const slideMap: Record<number, React.FC> = {
 export const DeckController: React.FC = () => {
   const { current, next, prev, first, last, goTo, total } = useHashSync();
   const [overviewOpen, setOverviewOpen] = useState(false);
+  const [helpOpen, setHelpOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
   const toggleOverview = useCallback(() => setOverviewOpen((o) => !o), []);
   const closeOverview = useCallback(() => setOverviewOpen(false), []);
+  const toggleHelp = useCallback(() => setHelpOpen((h) => !h), []);
+  const closeHelp = useCallback(() => setHelpOpen(false), []);
 
-  useKeyboardNav({ current, total, next, prev, first, last, toggleOverview });
+  useKeyboardNav({
+    current,
+    total,
+    next,
+    prev,
+    first,
+    last,
+    overviewOpen,
+    helpOpen,
+    toggleOverview,
+    closeOverview,
+    closeHelp,
+    toggleHelp,
+    toggleTheme,
+  });
 
   const CurrentSlide = slideMap[current] ?? slideMap[1];
 
@@ -84,6 +103,11 @@ export const DeckController: React.FC = () => {
       overviewOpen={overviewOpen}
       onToggleOverview={toggleOverview}
       onCloseOverview={closeOverview}
+      theme={theme}
+      onToggleTheme={toggleTheme}
+      helpOpen={helpOpen}
+      onToggleHelp={toggleHelp}
+      onCloseHelp={closeHelp}
     >
       <CurrentSlide />
     </Layout>

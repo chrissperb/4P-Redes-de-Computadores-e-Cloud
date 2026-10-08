@@ -18,7 +18,7 @@ export const SlideShell: React.FC<SlideShellProps> = ({ id, total, title, childr
       data-slide-id={id}
     >
       <header className="slide-header">
-        <h1 className="slide-title">{title}</h1>
+        <h1 className="slide-title" tabIndex={-1}>{title}</h1>
         <span className="slide-kicker">SDMD S/A</span>
       </header>
       <div className="slide-content">{children}</div>
