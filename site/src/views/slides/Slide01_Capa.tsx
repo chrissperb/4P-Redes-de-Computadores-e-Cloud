@@ -1,6 +1,7 @@
 import React from 'react';
 import { SlideShell } from '../common/SlideShell';
 import { slidesData, totalSlides } from '../../data/slidesData';
+import { BrandRow } from '../../components/Brands';
 
 export const Slide01_Capa: React.FC = () => {
   return (
@@ -15,7 +16,10 @@ export const Slide01_Capa: React.FC = () => {
         <p style={{ margin: 0, fontSize: 'clamp(13px, 1.8vw, 22px)' }}>
           Proposta de Arquitetura para Abertura de Contas 100% Digital
         </p>
-        <div style={{ marginTop: '2vw', display: 'flex', flexDirection: 'column', gap: '0.8vw' }}>
+        <div style={{ marginTop: '1.6vw' }}>
+          <BrandRow height={44} />
+        </div>
+        <div style={{ marginTop: '1.6vw', display: 'flex', flexDirection: 'column', gap: '0.8vw' }}>
           <p style={{ margin: 0, fontSize: 'clamp(12px, 1.6vw, 18px)' }}>
             Disciplina: Fundamentos de Redes de Computadores e Cloud Computing
           </p>

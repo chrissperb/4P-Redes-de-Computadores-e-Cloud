@@ -1,6 +1,7 @@
 import React from 'react';
 import { SlideShell } from '../common/SlideShell';
 import { slidesData, totalSlides } from '../../data/slidesData';
+import { BrandRow } from '../../components/Brands';
 
 export const Slide06_Requisitos: React.FC = () => {
   return (
@@ -15,6 +16,9 @@ export const Slide06_Requisitos: React.FC = () => {
             <li>Todos os sistemas citados deverão estar <strong>interligados e se comunicar entre si</strong>.</li>
             <li>Todos os <strong>requisitos de segurança aplicáveis</strong> deverão ser levados em consideração.</li>
           </ol>
+        </div>
+        <div style={{ paddingTop: 'clamp(4px,0.6vw,8px)' }}>
+          <BrandRow height={30} />
         </div>
       </div>
     </SlideShell>

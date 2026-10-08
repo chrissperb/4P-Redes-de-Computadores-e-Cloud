@@ -1,13 +1,17 @@
 import React from 'react';
 import { SlideShell } from '../common/SlideShell';
 import { slidesData, totalSlides } from '../../data/slidesData';
+import { BrandLogo } from '../../components/Brands';
 
 export const Slide09_AWS: React.FC = () => {
   return (
     <SlideShell id={9} total={totalSlides} title={slidesData[8].title}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(10px,1.6vw,20px)' }}>
         <div className="card">
-          <h2>Justificativa da Escolha – AWS</h2>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+            <h2>Justificativa da Escolha – AWS</h2>
+            <BrandLogo name="aws" height={40} />
+          </div>
           <ul>
             <li><strong>Liderança e abrangência</strong>: plataforma mais adotada e com ampla gama de serviços (conforme abordagem didática dos principais provedores – Unid. IV, pp. 5–7).</li>
             <li><strong>Suporte à integração privada</strong>: <strong>AWS Direct Connect</strong> permite extensão dedicada e privada do ambiente on-premise à nuvem, sem depender exclusivamente de túnel sobre Internet pública.</li>

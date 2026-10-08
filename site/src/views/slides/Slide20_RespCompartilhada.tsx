@@ -1,14 +1,20 @@
 import React from 'react';
 import { SlideShell } from '../common/SlideShell';
 import { slidesData, totalSlides } from '../../data/slidesData';
+import { ShieldIcon } from '../../components/icons/Illustrations';
 
 export const Slide20_RespCompartilhada: React.FC = () => {
   return (
     <SlideShell id={20} total={totalSlides} title={slidesData[19].title}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(10px,1.6vw,20px)' }}>
-        <div className="card">
-          <h2>Modelo de Responsabilidade Compartilhada (Req. 5)</h2>
-          <p>Conceito central em Segurança em Cloud: <em>"o provedor opera, gerencia e controla os componentes do sistema operacional do host e da camada de virtualização até a segurança física; o cliente é responsável pelo que coloca na nuvem"</em> (Unid. III, pp. 22–23).</p>
+        <div className="card" style={{ flexDirection: 'row', alignItems: 'center', gap: 'clamp(12px,2vw,24px)' }}>
+          <div style={{ flex: '0 0 auto' }}>
+            <ShieldIcon width="clamp(90px, 12vw, 160px)" height="auto" />
+          </div>
+          <div style={{ flex: 1 }}>
+            <h2>Modelo de Responsabilidade Compartilhada (Req. 5)</h2>
+            <p>Conceito central em Segurança em Cloud: <em>"o provedor opera, gerencia e controla os componentes do sistema operacional do host e da camada de virtualização até a segurança física; o cliente é responsável pelo que coloca na nuvem"</em> (Unid. III, pp. 22–23).</p>
+          </div>
         </div>
         <div className="grid-two">
           <div className="card">

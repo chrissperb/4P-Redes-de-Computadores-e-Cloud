@@ -1,9 +1,14 @@
 :root {
-  --bg: #0f1026;
+  --bg: #0f172a;
   --fg: #f8fafc;
-  --card: #1f2937;
-  --accent: #3b82f6;
+  --card: #222735;
+  --accent: #8b5cf6;
+  --accent-soft: rgba(139, 92, 246, 0.28);
+  --gold: #f59e0b;
+  --gold-soft: rgba(245, 158, 11, 0.18);
+  --border: #334155;
   --muted: #94a3b8;
+  --ring: #f59e0b;
 }
 
 * {
@@ -20,8 +25,9 @@ body,
 
 body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background: radial-gradient(1200px 800px at 50% 0%, #1e293b, #0f1026);
+  font-family: 'IBM Plex Sans', Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: radial-gradient(1200px 800px at 50% 0%, #1e293b, var(--bg));
+  background-color: var(--bg);
   color: var(--fg);
   line-height: 1.7;
 }
@@ -42,25 +48,50 @@ body {
   justify-content: center;
   padding: clamp(8px, 2vw, 24px);
   perspective: 1400px;
+  cursor: default;
 }
 
 .slide {
   width: min(1600px, 96vw);
   aspect-ratio: 16 / 9;
-  background: radial-gradient(600px 400px at 10% -10%, rgba(59, 130, 246, 0.25), transparent 70%),
-    linear-gradient(180deg, #1f293b 0%, #111827 100%);
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  background:
+    radial-gradient(600px 400px at 10% -10%, var(--accent-soft), transparent 70%),
+    radial-gradient(500px 300px at 110% 110%, var(--gold-soft), transparent 70%),
+    linear-gradient(180deg, #171d2f 0%, #0d1222 100%);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
   border-radius: 14px;
-  box-shadow: 0 60px 120px -80px rgba(59, 130, 246, 0.9);
+  box-shadow: 0 60px 120px -80px rgba(139, 92, 246, 0.55);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  animation: slideFade 220ms ease;
+  animation: slideFade 200ms ease;
   will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide {
+    animation: none;
+  }
+  .overview-card,
+  .deck-nav button {
+    transition: none !important;
+  }
+}
+
+/* Visible keyboard focus */
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 
 .slide-header {
   padding: clamp(12px, 2vw, 28px) clamp(16px, 4vw, 56px) 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .slide-title {
@@ -68,6 +99,21 @@ body {
   font-size: clamp(16px, 3.2vw, 44px);
   letter-spacing: -0.02em;
   line-height: 1.15;
+  font-weight: 600;
+}
+
+.slide-kicker {
+  flex: 0 0 auto;
+  font-size: clamp(10px, 1vw, 13px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--gold-soft);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: clamp(2px, 0.4vw, 6px) clamp(8px, 1vw, 14px);
+  border-radius: 999px;
+  white-space: nowrap;
+  font-weight: 500;
 }
 
 .slide-content {
@@ -100,9 +146,25 @@ body {
 .slide-footer {
   padding: 0 clamp(16px, 4vw, 56px) clamp(10px, 1.6vw, 18px);
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   color: var(--muted);
   font-size: clamp(10px, 1vw, 14px);
+}
+
+.slide-footer .deck-brand {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--border);
+  font-size: clamp(9px, 0.9vw, 12px);
+}
+
+.slide-counter {
+  font-variant-numeric: tabular-nums;
+  background: rgba(148, 163, 184, 0.14);
+  border: 1px solid var(--border);
+  padding: clamp(1px, 0.3vw, 4px) clamp(6px, 0.8vw, 10px);
+  border-radius: 999px;
 }
 
 .slide-content p {
@@ -125,6 +187,7 @@ body {
 
 .slide-content strong {
   font-weight: 600;
+  color: #fbbf24;
 }
 
 .slide-content em {
@@ -139,18 +202,20 @@ body {
 }
 
 .card {
-  background: linear-gradient(180deg, rgba(148, 163, 184, 0.16), rgba(15, 23, 42, 0.4));
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.14), rgba(15, 23, 42, 0.35));
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: clamp(10px, 1.8vw, 18px);
   display: flex;
   flex-direction: column;
   gap: clamp(6px, 1vw, 10px);
+  transition: border-color 200ms ease, transform 200ms ease;
 }
 
 .card h2 {
   margin: 0;
   font-size: clamp(14px, 2vw, 26px);
+  color: #fde68a;
 }
 
 .card p,
@@ -162,21 +227,22 @@ body {
   width: 100%;
   border-collapse: collapse;
   font-size: clamp(11px, 1.4vw, 18px);
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
 }
 
 .table th,
 .table td {
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  border: 1px solid var(--border);
   padding: clamp(6px, 1.2vw, 12px);
   text-align: left;
   vertical-align: top;
 }
 
 .table th {
-  background: rgba(59, 130, 246, 0.25);
+  background: var(--accent-soft);
+  color: #fde68a;
   font-weight: 600;
 }
 
@@ -201,7 +267,7 @@ body {
   position: fixed;
   inset: 0 0 auto 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--accent) var(--p, 0%), rgba(148, 163, 184, 0.25) var(--p, 0%));
+  background: linear-gradient(90deg, var(--gold) var(--p, 0%), rgba(148, 163, 184, 0.22) var(--p, 0%));
   transition: background 160ms ease;
   z-index: 6;
 }
@@ -215,15 +281,17 @@ body {
   gap: 10px;
   z-index: 6;
   pointer-events: none;
+  flex-wrap: wrap;
+  padding: 0 12px;
 }
 
 .deck-nav button {
   pointer-events: all;
   appearance: none;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  background: linear-gradient(180deg, rgba(148, 163, 184, 0.25), rgba(15, 23, 42, 0.6));
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.2), rgba(15, 23, 42, 0.65));
   color: var(--fg);
-  padding: 8px 14px;
+  padding: 10px 16px;
   border-radius: 999px;
   font-size: clamp(11px, 1vw, 14px);
   display: flex;
@@ -231,6 +299,17 @@ body {
   gap: 8px;
   backdrop-filter: blur(6px);
   cursor: pointer;
+  min-height: 40px;
+  transition: transform 120ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.deck-nav button:hover:not([disabled]) {
+  background: linear-gradient(180deg, rgba(139, 92, 246, 0.35), rgba(15, 23, 42, 0.7));
+  border-color: var(--accent);
+}
+
+.deck-nav button:active:not([disabled]) {
+  transform: scale(0.97);
 }
 
 .deck-nav button[disabled] {
@@ -245,7 +324,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: clamp(12px, 4vw, 48px);
-  background: radial-gradient(1200px 800px at 50% 0%, rgba(30, 41, 59, 0.96), rgba(15, 16, 38, 0.98));
+  background: radial-gradient(1200px 800px at 50% 0%, rgba(30, 41, 59, 0.96), rgba(15, 23, 42, 0.98));
   z-index: 7;
   overflow: auto;
 }
@@ -263,8 +342,8 @@ body {
 
 .overview-card {
   appearance: none;
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  background: linear-gradient(180deg, rgba(148, 163, 184, 0.14), rgba(15, 23, 42, 0.5));
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.12), rgba(15, 23, 42, 0.45));
   color: var(--fg);
   border-radius: 12px;
   padding: clamp(10px, 1.6vw, 16px);
@@ -274,11 +353,18 @@ body {
   gap: 6px;
   text-align: left;
   cursor: pointer;
+  min-height: 64px;
+  transition: transform 120ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.overview-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
 }
 
 .overview-card.is-active {
-  border-color: rgba(59, 130, 246, 0.9);
-  box-shadow: 0 30px 60px -40px rgba(59, 130, 246, 0.9);
+  border-color: var(--gold);
+  box-shadow: 0 30px 60px -40px rgba(245, 158, 11, 0.5);
 }
 
 .overview-id {
@@ -288,11 +374,12 @@ body {
 
 .overview-title {
   font-size: clamp(12px, 1.6vw, 18px);
+  font-weight: 500;
 }
 
 @keyframes slideFade {
   from {
-    opacity: 0.6;
+    opacity: 0.5;
     transform: translateY(6px) rotateX(4deg);
   }
   to {
@@ -301,8 +388,11 @@ body {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .slide {
-    animation: none;
+@media (max-width: 640px) {
+  .slide-footer .deck-brand {
+    display: none;
+  }
+  .deck-nav button {
+    padding: 10px 12px;
   }
 }

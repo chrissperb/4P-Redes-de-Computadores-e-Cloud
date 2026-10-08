@@ -1,5 +1,8 @@
 import React from 'react';
 import { architectureZones } from '../../data/architectureZones';
+import awsLogo from '../../assets/logos/aws.svg';
+import sapLogo from '../../assets/logos/sap.svg';
+import sfdcLogo from '../../assets/logos/sfdc.svg';
 
 export const ArchitectureSVG: React.FC = () => {
   return (
@@ -24,10 +27,11 @@ export const ArchitectureSVG: React.FC = () => {
           {architectureZones[0].label} {architectureZones[0].title}
         </text>
         <rect x="80" y="210" width="320" height="120" rx="6" fill="#e5e7eb" stroke="#9ca3af" strokeWidth="1.5" />
-        <text x="240" y="250" textAnchor="middle" fontSize="16" fontWeight="500">
+        <image href={sapLogo} x="300" y="225" width="72" height={72 / (412.38 / 204)} />
+        <text x="200" y="250" textAnchor="middle" fontSize="16" fontWeight="500">
           SAP ERP (On-Premise)
         </text>
-        <text x="240" y="280" textAnchor="middle" fontSize="13">
+        <text x="200" y="278" textAnchor="middle" fontSize="13">
           Deve permanecer on-premise
         </text>
         <rect x="80" y="360" width="320" height="120" rx="6" fill="#e5e7eb" stroke="#9ca3af" strokeWidth="1.5" />
@@ -63,7 +67,8 @@ export const ArchitectureSVG: React.FC = () => {
       {/* AWS Cloud Boundary */}
       <g role="group" aria-label="Ambiente AWS (Região sa-east-1)">
         <rect x="650" y="80" width="900" height="760" rx="10" fill="#eff6ff" stroke="#3b82f6" strokeWidth="2" />
-        <text x="1100" y="115" textAnchor="middle" fontSize="22" fontWeight="600" fill="#1e40af">
+        <image href={awsLogo} x="690" y="95" width="96" height={96 / (304 / 182)} />
+        <text x="1180" y="115" textAnchor="middle" fontSize="22" fontWeight="600" fill="#1e40af">
           AWS Cloud – Região sa-east-1
         </text>
       </g>
@@ -128,11 +133,9 @@ export const ArchitectureSVG: React.FC = () => {
         <text x="1390" y="435" textAnchor="middle" fontSize="16" fontWeight="600">
           {architectureZones[4].label} {architectureZones[4].title}
         </text>
-        <text x="1390" y="475" textAnchor="middle" fontSize="14">
-          Salesforce CRM (SaaS)
-        </text>
-        <text x="1390" y="505" textAnchor="middle" fontSize="12">
-          Integração server-side
+        <image href={sfdcLogo} x="1355" y="450" width="70" height={70 / (273 / 191)} />
+        <text x="1390" y="535" textAnchor="middle" fontSize="12">
+          Integração server-side via HTTPS
         </text>
         <title>{architectureZones[4].description}</title>
       </g>

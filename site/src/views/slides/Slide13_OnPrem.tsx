@@ -1,12 +1,16 @@
 import React from 'react';
 import { SlideShell } from '../common/SlideShell';
 import { slidesData, totalSlides } from '../../data/slidesData';
+import { BrandLogo } from '../../components/Brands';
 
 export const Slide13_OnPrem: React.FC = () => {
   return (
     <SlideShell id={13} total={totalSlides} title={slidesData[12].title}>
       <div className="card">
-        <h2>Componentes e Funcionalidades</h2>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+          <h2>Componentes e Funcionalidades</h2>
+          <BrandLogo name="sap" height={34} />
+        </div>
         <ul>
           <li><strong>SAP ERP (on-premise)</strong>: sistema transacional da empresa. Mantido <strong>in loco</strong> por questões de segurança (Req. 1). Não exposto diretamente à Internet.</li>
           <li><strong>Agências Físicas</strong>: pontos de atendimento. Interação com processos internos conforme modelo atual.</li>

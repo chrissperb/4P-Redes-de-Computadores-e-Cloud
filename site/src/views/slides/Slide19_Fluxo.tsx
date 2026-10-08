@@ -1,12 +1,17 @@
 import React from 'react';
 import { SlideShell } from '../common/SlideShell';
 import { slidesData, totalSlides } from '../../data/slidesData';
+import { FlowDiagramIcon } from '../../components/icons/Illustrations';
 
 export const Slide19_Fluxo: React.FC = () => {
   return (
     <SlideShell id={19} total={totalSlides} title={slidesData[18].title}>
-      <div className="card">
-        <h2>Fluxo End-to-End (Deliv. 2)</h2>
+      <div className="card" style={{ flexDirection: 'row', alignItems: 'center', gap: 'clamp(12px,2vw,24px)' }}>
+        <div style={{ flex: '0 0 auto' }}>
+          <FlowDiagramIcon width="clamp(150px, 22vw, 300px)" height="auto" />
+        </div>
+        <div style={{ flex: 1 }}>
+          <h2>Fluxo End-to-End (Deliv. 2)</h2>
         <ol>
           <li><strong>Solicitação</strong> (Cliente) → Acesso via canal público (CloudFront + WAF) com autenticação (Cognito + MFA).</li>
           <li><strong>Validação</strong> → API Gateway recebe requisição e aciona orquestração (Step Functions).</li>
@@ -19,6 +24,7 @@ export const Slide19_Fluxo: React.FC = () => {
         <p style={{ color: 'var(--muted)', fontSize: 'clamp(11px,1.4vw,16px)' }}>
           Fluxo reutiliza as <strong>mesmas zonas/cores</strong> do diagrama (Slide 12), reforçando clareza de diagramação.
         </p>
+        </div>
       </div>
     </SlideShell>
   );

@@ -1,11 +1,20 @@
 import React from 'react';
 import { SlideShell } from '../common/SlideShell';
 import { slidesData, totalSlides } from '../../data/slidesData';
+import { StackIcon } from '../../components/icons/Illustrations';
 
 export const Slide10_Modelos: React.FC = () => {
   return (
     <SlideShell id={10} total={totalSlides} title={slidesData[9].title}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(10px,1.6vw,20px)' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: 'clamp(12px,2vw,24px)' }}>
+          <div style={{ flex: '0 0 auto' }}>
+            <StackIcon width="clamp(130px, 18vw, 240px)" height="auto" />
+          </div>
+          <p style={{ flex: 1, margin: 0, color: 'var(--muted)', alignSelf: 'center' }}>
+            A solução combina os <strong>três modelos de serviço</strong> de forma coerente com os conceitos da disciplina (Unid. III).
+          </p>
+        </div>
         <table className="table">
           <thead>
             <tr>
