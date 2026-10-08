@@ -85,11 +85,8 @@ export const DeckController: React.FC = () => {
   const closeAccessPanel = useCallback(() => setAccessOpen(false), []);
   const toggleAutoRead = useCallback(() => setAutoRead((a) => !a), []);
   const speakSlide = useCallback(() => speak(current), [speak, current]);
-  // Acessibilidade → Início: volta ao primeiro slide e fecha o painel.
-  const goHome = useCallback(() => {
-    goTo(1);
-    closeAccessPanel();
-  }, [goTo, closeAccessPanel]);
+  // Início (rodapé): volta ao primeiro slide.
+  const goHome = useCallback(() => goTo(1), [goTo]);
 
   // Auto-read the current slide when enabled.
   useEffect(() => {

@@ -11,6 +11,7 @@ import {
   ArrowRightIcon,
   ExpandIcon,
   GridIcon,
+  HomeIcon,
   MoonIcon,
   SunIcon,
 } from '../../components/icons/Icons';
@@ -133,6 +134,9 @@ export const Layout: React.FC<LayoutProps> = ({
         {children}
       </div>
       <nav className="deck-nav" aria-label="Navegação do deck">
+        <button onClick={onHome} title="Início — primeiro slide (Home)">
+          <HomeIcon /> Início
+        </button>
         <button onClick={onPrev} disabled={current <= 1} title="Anterior (←)">
           <ArrowLeftIcon /> Anterior
         </button>
@@ -211,7 +215,6 @@ export const Layout: React.FC<LayoutProps> = ({
         <AccessibilityPanel
           open={accessOpen}
           onClose={onCloseAccessPanel}
-          onHome={onHome}
           hc={hc}
           onToggleHc={onToggleHc}
           textScale={textScale}

@@ -1,13 +1,12 @@
 import React from 'react';
 import { cn } from '../../utils/classNames';
-import { HomeIcon, XIcon } from '../../components/icons/Icons';
+import { XIcon } from '../../components/icons/Icons';
 import { TextScale } from '../../hooks/useAccessibility';
 import { ScreenReaderStatus } from '../../hooks/useScreenReader';
 
 interface AccessibilityPanelProps {
   open: boolean;
   onClose: () => void;
-  onHome: () => void;
   hc: boolean;
   onToggleHc: () => void;
   textScale: TextScale;
@@ -61,7 +60,6 @@ function Switch({
 export const AccessibilityPanel: React.FC<AccessibilityPanelProps> = ({
   open,
   onClose,
-  onHome,
   hc,
   onToggleHc,
   textScale,
@@ -88,16 +86,10 @@ export const AccessibilityPanel: React.FC<AccessibilityPanelProps> = ({
       <div className="access-panel" role="document" onClick={(e) => e.stopPropagation()}>
         <header className="access-header">
           <h2 className="access-title">Acessibilidade</h2>
-          <div className="access-actions">
-            <button type="button" className="help-close" onClick={onHome} title="Ir ao primeiro slide">
-              <HomeIcon size={18} />
-              Início
-            </button>
-            <button type="button" className="help-close" onClick={onClose} aria-label="Fechar opções de acessibilidade">
-              <XIcon size={18} />
-              Fechar
-            </button>
-          </div>
+          <button type="button" className="help-close" onClick={onClose} aria-label="Fechar opções de acessibilidade">
+            <XIcon size={18} />
+            Fechar
+          </button>
         </header>
 
         <section className="access-section" aria-labelledby="access-vision-title">
