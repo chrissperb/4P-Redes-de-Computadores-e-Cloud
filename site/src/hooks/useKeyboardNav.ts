@@ -17,6 +17,7 @@ interface UseKeyboardNavOpts {
   toggleAccessPanel: () => void;
   closeAccessPanel: () => void;
   toggleTheme: () => void;
+  toggleLang: () => void;
   speakSlide: () => void;
   stopSpeak: () => void;
 }
@@ -38,6 +39,7 @@ export function useKeyboardNav({
   toggleAccessPanel,
   closeAccessPanel,
   toggleTheme,
+  toggleLang,
   speakSlide,
   stopSpeak,
 }: UseKeyboardNavOpts) {
@@ -111,6 +113,11 @@ export function useKeyboardNav({
           e.preventDefault();
           toggleTheme();
           break;
+        case 'l':
+        case 'L':
+          e.preventDefault();
+          toggleLang();
+          break;
         case 'a':
         case 'A':
           e.preventDefault();
@@ -150,6 +157,7 @@ export function useKeyboardNav({
     toggleAccessPanel,
     closeAccessPanel,
     toggleTheme,
+    toggleLang,
     speakSlide,
     stopSpeak,
   ]);

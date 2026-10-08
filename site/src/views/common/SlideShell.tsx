@@ -1,14 +1,20 @@
 import React from 'react';
+import { useI18n } from '../../i18n/context';
+import { slidesData } from '../../data/slidesData';
 
 interface SlideShellProps {
   id: number;
   total: number;
-  title: string;
+  title?: string;
   children: React.ReactNode;
   className?: string;
 }
 
-export const SlideShell: React.FC<SlideShellProps> = ({ id, total, title, children, className = '' }) => {
+export const SlideShell: React.FC<SlideShellProps> = ({ id, total, title: propTitle, children, className = '' }) => {
+  const { lang } = useI18n();
+  // Migrated slides stop passing `title`; fallback resolves it by slide id so
+  // the header always follows the active language.
+  const title = propTitle?.trim() ? propTitle : (slidesData[id - 1]?.title[lang] ?? '');
   return (
     <section
       className={`slide ${className}`}

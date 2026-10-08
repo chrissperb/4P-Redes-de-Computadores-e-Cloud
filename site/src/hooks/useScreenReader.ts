@@ -1,19 +1,24 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useI18n, type Lang } from '../i18n/context';
 
 export type ScreenReaderStatus = 'idle' | 'speaking' | 'paused' | 'unavailable';
 
-function pickPtVoice(speech: SpeechSynthesis): SpeechSynthesisVoice | undefined {
+const speechLang = (lang: Lang) => (lang === 'pt' ? 'pt-BR' : 'en-US');
+
+function pickVoice(speech: SpeechSynthesis, lang: Lang): SpeechSynthesisVoice | undefined {
   const voices = speech.getVoices();
   if (!voices.length) return undefined;
+  const target = speechLang(lang).toLowerCase().replace('_', '-');
   return (
-    voices.find((v) => v.lang.toLowerCase().replace('_', '-').startsWith('pt-br')) ||
-    voices.find((v) => v.lang.toLowerCase().replace('_', '-').startsWith('pt')) ||
+    voices.find((v) => v.lang.toLowerCase().replace('_', '-').startsWith(target)) ||
+    voices.find((v) => v.lang.toLowerCase().replace('_', '-').startsWith(lang)) ||
     voices[0]
   );
 }
 
 export function useScreenReader() {
   const supported = typeof window !== 'undefined' && 'speechSynthesis' in window;
+  const { lang } = useI18n();
   const [status, setStatus] = useState<ScreenReaderStatus>(supported ? 'idle' : 'unavailable');
   // Authoritative state for timers/polling closures (they would otherwise
   // capture a stale status).
@@ -28,11 +33,11 @@ export function useScreenReader() {
       setStatus('unavailable');
       return;
     }
-    // Warm up voice list (populated asynchronously in some browsers).
-    speechSynthesis.getVoices();
-    const onVoicesChanged = () => {
-      /* voices ready; pickPtVoice resolves lazily on speak */
-    };
+// Warm up voice list (populated asynchronously in some browsers).
+      speechSynthesis.getVoices();
+      const onVoicesChanged = () => {
+        /* voices ready; pickVoice resolves lazily on speak */
+      };
     speechSynthesis.addEventListener('voiceschanged', onVoicesChanged);
 
     // Safety net only: detect natural end of speech. Never derive "paused"
@@ -69,8 +74,8 @@ export function useScreenReader() {
       speechSynthesis.cancel();
       const utter = new SpeechSynthesisUtterance(text);
       spokenRef.current = utter;
-      utter.lang = 'pt-BR';
-      const voice = pickPtVoice(speechSynthesis);
+      utter.lang = speechLang(lang);
+      const voice = pickVoice(speechSynthesis, lang);
       if (voice) utter.voice = voice;
       utter.rate = 0.95;
       const isCurrent = () => spokenRef.current === utter;
@@ -83,7 +88,7 @@ export function useScreenReader() {
       speechSynthesis.speak(utter);
       setStatus('speaking');
     },
-    [supported, getSlideText],
+    [supported, getSlideText, lang],
   );
 
   const pause = useCallback(() => {

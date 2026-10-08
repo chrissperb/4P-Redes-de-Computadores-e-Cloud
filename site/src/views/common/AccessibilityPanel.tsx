@@ -1,5 +1,6 @@
 import React from 'react';
 import { cn } from '../../utils/classNames';
+import { useI18n } from '../../i18n/context';
 import { XIcon } from '../../components/icons/Icons';
 import { TextScale } from '../../hooks/useAccessibility';
 import { ScreenReaderStatus } from '../../hooks/useScreenReader';
@@ -29,11 +30,11 @@ const SCALE_OPTIONS: Array<{ value: TextScale; label: string }> = [
   { value: 1.5, label: '150%' },
 ];
 
-const SR_STATUS_LABEL: Record<ScreenReaderStatus, string> = {
-  idle: 'Pronto.',
-  speaking: 'Lendo o slide…',
-  paused: 'Pausado.',
-  unavailable: 'Leitura por voz indisponível neste navegador.',
+const SR_STATUS_KEY: Record<ScreenReaderStatus, string> = {
+  idle: 'sr.idle',
+  speaking: 'sr.speaking',
+  paused: 'sr.paused',
+  unavailable: 'sr.unavailable',
 };
 
 function Switch({
@@ -75,36 +76,39 @@ export const AccessibilityPanel: React.FC<AccessibilityPanelProps> = ({
   autoRead,
   onToggleAutoRead,
 }) => {
+  const { t } = useI18n();
   return (
     <div
       className={cn('deck-access', open && 'is-open')}
       role="dialog"
       aria-modal="true"
-      aria-label="Opções de acessibilidade"
+      aria-label={t('access.aria')}
       onClick={onClose}
     >
       <div className="access-panel" role="document" onClick={(e) => e.stopPropagation()}>
         <header className="access-header">
-          <h2 className="access-title">Acessibilidade</h2>
-          <button type="button" className="help-close" onClick={onClose} aria-label="Fechar opções de acessibilidade">
+          <h2 className="access-title">{t('access.title')}</h2>
+          <button type="button" className="help-close" onClick={onClose} aria-label={t('access.closeAria')}>
             <XIcon size={18} />
-            Fechar
+            {t('access.close')}
           </button>
         </header>
 
         <section className="access-section" aria-labelledby="access-vision-title">
-          <h3 id="access-vision-title">Visual</h3>
+          <h3 id="access-vision-title">{t('access.visionTitle')}</h3>
           <div className="switch-row">
             <span className="switch-label">
-              Alto contraste<span className="switch-hint">Fundo preto, texto branco, destaques amarelos</span>
+              {t('access.hc')}
+              <span className="switch-hint">{t('access.hcHint')}</span>
             </span>
-            <Switch checked={hc} onToggle={onToggleHc} label="Ativar alto contraste" />
+            <Switch checked={hc} onToggle={onToggleHc} label={t('access.hcAria')} />
           </div>
           <div className="switch-row">
             <span className="switch-label">
-              Tamanho das letras<span className="switch-hint">Redimensiona o conteúdo do slide</span>
+              {t('access.fontSize')}
+              <span className="switch-hint">{t('access.fontSizeHint')}</span>
             </span>
-            <div className="scale-group" role="radiogroup" aria-label="Tamanho das letras">
+            <div className="scale-group" role="radiogroup" aria-label={t('access.fontSizeAria')}>
               {SCALE_OPTIONS.map((opt) => (
                 <button
                   key={opt.value}
@@ -121,42 +125,44 @@ export const AccessibilityPanel: React.FC<AccessibilityPanelProps> = ({
           </div>
           <div className="switch-row">
             <span className="switch-label">
-              Reduzir movimento<span className="switch-hint">Desativa animações e transições</span>
+              {t('access.motion')}
+              <span className="switch-hint">{t('access.motionHint')}</span>
             </span>
-            <Switch checked={reduceMotion} onToggle={onToggleReduceMotion} label="Reduzir movimento" />
+            <Switch checked={reduceMotion} onToggle={onToggleReduceMotion} label={t('access.motionAria')} />
           </div>
         </section>
 
         <section className="access-section" aria-labelledby="access-sr-title">
-          <h3 id="access-sr-title">Leitura em voz alta</h3>
+          <h3 id="access-sr-title">{t('access.srTitle')}</h3>
           {!srSupported ? (
             <p className="sr-status" role="status">
-              {SR_STATUS_LABEL.unavailable}
+              {t(SR_STATUS_KEY.unavailable)}
             </p>
           ) : (
             <>
               <div className="sr-controls">
                 <button type="button" onClick={onSpeak} className="sr-btn">
-                  Ouvir slide
+                  {t('access.listen')}
                 </button>
                 <button type="button" onClick={onPause} className="sr-btn" disabled={srStatus !== 'speaking'}>
-                  Pausar
+                  {t('access.pause')}
                 </button>
                 <button type="button" onClick={onResume} className="sr-btn" disabled={srStatus !== 'paused'}>
-                  Retomar
+                  {t('access.resume')}
                 </button>
                 <button type="button" onClick={onStop} className="sr-btn" disabled={srStatus === 'idle'}>
-                  Parar
+                  {t('access.stop')}
                 </button>
               </div>
               <div className="switch-row">
                 <span className="switch-label">
-                  Ler ao navegar<span className="switch-hint">Fala cada slide ao entrar</span>
+                  {t('access.autoRead')}
+                  <span className="switch-hint">{t('access.autoReadHint')}</span>
                 </span>
-                <Switch checked={autoRead} onToggle={onToggleAutoRead} label="Ler cada slide ao navegar" />
+                <Switch checked={autoRead} onToggle={onToggleAutoRead} label={t('access.autoReadAria')} />
               </div>
               <p className="sr-status" role="status">
-                {SR_STATUS_LABEL[srStatus]}
+                {t(SR_STATUS_KEY[srStatus])}
               </p>
             </>
           )}

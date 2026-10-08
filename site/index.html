@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
@@ -21,6 +21,9 @@
         var savedMotion = localStorage.getItem('sdmd-motion');
         if (savedMotion === 'on' || savedMotion === 'off') {
           document.documentElement.dataset.motion = savedMotion;
+        }
+        if (localStorage.getItem('sdmd-lang') === 'en') {
+          document.documentElement.lang = 'en-US';
         }
       } catch (e) {}
     </script>

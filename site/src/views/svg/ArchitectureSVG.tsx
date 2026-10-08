@@ -3,8 +3,65 @@ import { architectureZones } from '../../data/architectureZones';
 import awsLogo from '../../assets/logos/aws.svg';
 import sapLogo from '../../assets/logos/sap.svg';
 import sfdcLogo from '../../assets/logos/sfdc.svg';
+import { useI18n } from '../../i18n/context';
+
+const L = {
+  title: {
+    pt: 'Diagrama de Arquitetura Híbrida SDMD S/A (AWS + On-Prem)',
+    en: 'SDMD S/A Hybrid Architecture Diagram (AWS + On-Premises)',
+  },
+  desc: {
+    pt: 'Arquitetura híbrida: SAP ERP on-premise conectado via AWS Direct Connect (link dedicado privado) ao ambiente AWS (API Gateway, Step Functions, Lambda/ECS, Aurora, S3, EventBridge, KMS, Route 53, CloudFront, WAF, Cognito + MFA) integrando com Salesforce CRM (SaaS).',
+    en: 'Hybrid architecture: on-premises SAP ERP connected via AWS Direct Connect (private dedicated link) to the AWS environment (API Gateway, Step Functions, Lambda/ECS, Aurora, S3, EventBridge, KMS, Route 53, CloudFront, WAF, Cognito + MFA) integrating with Salesforce CRM (SaaS).',
+  },
+  awsBoundary: {
+    pt: 'Ambiente AWS (Região sa-east-1)',
+    en: 'AWS Environment (sa-east-1 Region)',
+  },
+  awsCloud: {
+    pt: 'AWS Cloud – Região sa-east-1',
+    en: 'AWS Cloud – sa-east-1 Region',
+  },
+  sapErp: {
+    pt: 'SAP ERP (On-Premise)',
+    en: 'SAP ERP (On-Premises)',
+  },
+  sapNote: {
+    pt: 'Deve permanecer on-premise',
+    en: 'Must remain on-premises',
+  },
+  agencies: {
+    pt: 'Agências Físicas',
+    en: 'Physical Branches',
+  },
+  agenciesNote: {
+    pt: 'Ponto de atendimento',
+    en: 'Service point',
+  },
+  dxConnect: {
+    pt: 'AWS Direct Connect',
+    en: 'AWS Direct Connect',
+  },
+  dxConnectNote: {
+    pt: '(link dedicado privado)',
+    en: '(private dedicated link)',
+  },
+  endpoint: {
+    pt: 'PrivateLink / Interface VPC Endpoint',
+    en: 'PrivateLink / Interface VPC Endpoint',
+  },
+  kms: {
+    pt: 'AWS KMS (Criptografia)',
+    en: 'AWS KMS (Encryption)',
+  },
+  sfdcNote: {
+    pt: 'Integração server-side via HTTPS',
+    en: 'Server-side integration over HTTPS',
+  },
+};
 
 export const ArchitectureSVG: React.FC = () => {
+  const { lang } = useI18n();
   return (
     <svg
       viewBox="0 0 1600 900"
@@ -13,39 +70,35 @@ export const ArchitectureSVG: React.FC = () => {
       aria-labelledby="arch-title arch-desc"
       style={{ width: '100%', height: 'auto' }}
     >
-      <title id="arch-title">Diagrama de Arquitetura Híbrida SDMD S/A (AWS + On-Prem)</title>
-      <desc id="arch-desc">
-        Arquitetura híbrida: SAP ERP on-premise conectado via AWS Direct Connect (link dedicado privado) ao ambiente AWS
-        (API Gateway, Step Functions, Lambda/ECS, Aurora, S3, EventBridge, KMS, Route 53, CloudFront, WAF, Cognito + MFA)
-        integrando com Salesforce CRM (SaaS).
-      </desc>
+      <title id="arch-title">{L.title[lang]}</title>
+      <desc id="arch-desc">{L.desc[lang]}</desc>
 
       {/* On-Prem Zone */}
-      <g className="zone" data-zone="1" role="group" aria-label={architectureZones[0].title}>
+      <g className="zone" data-zone="1" role="group" aria-label={architectureZones[0].title[lang]}>
         <rect x="50" y="150" width="380" height="550" rx="8" ry="8" fill="#f3f4f6" stroke="#6b7280" strokeWidth="2" />
         <text x="240" y="185" textAnchor="middle" fontSize="20" fontWeight="600">
-          {architectureZones[0].label} {architectureZones[0].title}
+          {architectureZones[0].label} {architectureZones[0].title[lang]}
         </text>
         <rect x="80" y="210" width="320" height="120" rx="6" fill="#e5e7eb" stroke="#9ca3af" strokeWidth="1.5" />
         <image href={sapLogo} x="300" y="225" width="72" height={72 / (412.38 / 204)} />
         <text x="200" y="250" textAnchor="middle" fontSize="16" fontWeight="500">
-          SAP ERP (On-Premise)
+          {L.sapErp[lang]}
         </text>
         <text x="200" y="278" textAnchor="middle" fontSize="13">
-          Deve permanecer on-premise
+          {L.sapNote[lang]}
         </text>
         <rect x="80" y="360" width="320" height="120" rx="6" fill="#e5e7eb" stroke="#9ca3af" strokeWidth="1.5" />
         <text x="240" y="400" textAnchor="middle" fontSize="16" fontWeight="500">
-          Agências Físicas
+          {L.agencies[lang]}
         </text>
         <text x="240" y="430" textAnchor="middle" fontSize="13">
-          Ponto de atendimento
+          {L.agenciesNote[lang]}
         </text>
-        <title>{architectureZones[0].description}</title>
+        <title>{architectureZones[0].description[lang]}</title>
       </g>
 
       {/* Direct Connect Link */}
-      <g className="zone" data-zone="2" role="group" aria-label={architectureZones[1].title}>
+      <g className="zone" data-zone="2" role="group" aria-label={architectureZones[1].title[lang]}>
         <path
           d="M 430 425 L 530 425 L 530 375 L 650 375"
           fill="none"
@@ -56,40 +109,40 @@ export const ArchitectureSVG: React.FC = () => {
           vectorEffect="non-scaling-stroke"
         />
         <text x="540" y="355" textAnchor="middle" fontSize="14" fontWeight="600" fill="#92400e">
-          AWS Direct Connect
+          {L.dxConnect[lang]}
         </text>
         <text x="540" y="405" textAnchor="middle" fontSize="12" fill="#92400e">
-          (link dedicado privado)
+          {L.dxConnectNote[lang]}
         </text>
-        <title>{architectureZones[1].description}</title>
+        <title>{architectureZones[1].description[lang]}</title>
       </g>
 
       {/* AWS Cloud Boundary */}
-      <g role="group" aria-label="Ambiente AWS (Região sa-east-1)">
+      <g role="group" aria-label={L.awsBoundary[lang]}>
         <rect x="650" y="80" width="900" height="760" rx="10" fill="#eff6ff" stroke="#3b82f6" strokeWidth="2" />
         <image href={awsLogo} x="690" y="95" width="96" height={96 / (304 / 182)} />
         <text x="1180" y="115" textAnchor="middle" fontSize="22" fontWeight="600" fill="#1e40af">
-          AWS Cloud – Região sa-east-1
+          {L.awsCloud[lang]}
         </text>
       </g>
 
       {/* Integration Zone */}
-      <g className="zone" data-zone="2" role="group" aria-label={architectureZones[1].title}>
+      <g className="zone" data-zone="2" role="group" aria-label={architectureZones[1].title[lang]}>
         <rect x="680" y="330" width="240" height="120" rx="8" fill="#dbeafe" stroke="#2563eb" strokeWidth="2" />
         <text x="800" y="365" textAnchor="middle" fontSize="16" fontWeight="600">
-          {architectureZones[1].label} {architectureZones[1].title}
+          {architectureZones[1].label} {architectureZones[1].title[lang]}
         </text>
         <text x="800" y="395" textAnchor="middle" fontSize="13">
-          PrivateLink / Interface VPC Endpoint
+          {L.endpoint[lang]}
         </text>
-        <title>{architectureZones[1].description}</title>
+        <title>{architectureZones[1].description[lang]}</title>
       </g>
 
       {/* Core Onboarding Zone */}
-      <g className="zone" data-zone="3" role="group" aria-label={architectureZones[2].title}>
+      <g className="zone" data-zone="3" role="group" aria-label={architectureZones[2].title[lang]}>
         <rect x="950" y="150" width="280" height="220" rx="8" fill="#f3e8ff" stroke="#8b5cf6" strokeWidth="2" />
         <text x="1090" y="185" textAnchor="middle" fontSize="16" fontWeight="600">
-          {architectureZones[2].label} {architectureZones[2].title}
+          {architectureZones[2].label} {architectureZones[2].title[lang]}
         </text>
         <rect x="970" y="200" width="240" height="50" rx="6" fill="#e9d5ff" stroke="#a78bfa" strokeWidth="1.2" />
         <text x="1090" y="230" textAnchor="middle" fontSize="13">
@@ -99,14 +152,14 @@ export const ArchitectureSVG: React.FC = () => {
         <text x="1090" y="295" textAnchor="middle" fontSize="13">
           Step Functions / Lambda / ECS
         </text>
-        <title>{architectureZones[2].description}</title>
+        <title>{architectureZones[2].description[lang]}</title>
       </g>
 
       {/* Data Zone */}
-      <g className="zone" data-zone="4" role="group" aria-label={architectureZones[3].title}>
+      <g className="zone" data-zone="4" role="group" aria-label={architectureZones[3].title[lang]}>
         <rect x="950" y="400" width="280" height="280" rx="8" fill="#ecfdf5" stroke="#10b981" strokeWidth="2" />
         <text x="1090" y="435" textAnchor="middle" fontSize="16" fontWeight="600">
-          {architectureZones[3].label} {architectureZones[3].title}
+          {architectureZones[3].label} {architectureZones[3].title[lang]}
         </text>
         <rect x="970" y="455" width="240" height="45" rx="6" fill="#d1fae5" stroke="#34d399" strokeWidth="1.2" />
         <text x="1090" y="482" textAnchor="middle" fontSize="13">
@@ -122,29 +175,29 @@ export const ArchitectureSVG: React.FC = () => {
         </text>
         <rect x="970" y="620" width="240" height="45" rx="6" fill="#d1fae5" stroke="#34d399" strokeWidth="1.2" />
         <text x="1090" y="647" textAnchor="middle" fontSize="13">
-          AWS KMS (Criptografia)
+          {L.kms[lang]}
         </text>
-        <title>{architectureZones[3].description}</title>
+        <title>{architectureZones[3].description[lang]}</title>
       </g>
 
       {/* Salesforce Zone */}
-      <g className="zone" data-zone="5" role="group" aria-label={architectureZones[4].title}>
+      <g className="zone" data-zone="5" role="group" aria-label={architectureZones[4].title[lang]}>
         <rect x="1250" y="400" width="280" height="160" rx="8" fill="#fef3c7" stroke="#f59e0b" strokeWidth="2" />
         <text x="1390" y="435" textAnchor="middle" fontSize="16" fontWeight="600">
-          {architectureZones[4].label} {architectureZones[4].title}
+          {architectureZones[4].label} {architectureZones[4].title[lang]}
         </text>
         <image href={sfdcLogo} x="1355" y="450" width="70" height={70 / (273 / 191)} />
         <text x="1390" y="535" textAnchor="middle" fontSize="12">
-          Integração server-side via HTTPS
+          {L.sfdcNote[lang]}
         </text>
-        <title>{architectureZones[4].description}</title>
+        <title>{architectureZones[4].description[lang]}</title>
       </g>
 
       {/* Client Channel Zone */}
-      <g className="zone" data-zone="6" role="group" aria-label={architectureZones[5].title}>
+      <g className="zone" data-zone="6" role="group" aria-label={architectureZones[5].title[lang]}>
         <rect x="1250" y="150" width="280" height="220" rx="8" fill="#ccfbf1" stroke="#14b8a6" strokeWidth="2" />
         <text x="1390" y="185" textAnchor="middle" fontSize="16" fontWeight="600">
-          {architectureZones[5].label} {architectureZones[5].title}
+          {architectureZones[5].label} {architectureZones[5].title[lang]}
         </text>
         <rect x="1270" y="200" width="240" height="45" rx="6" fill="#a7f3d0" stroke="#2dd4bf" strokeWidth="1.2" />
         <text x="1390" y="227" textAnchor="middle" fontSize="13">
@@ -158,7 +211,7 @@ export const ArchitectureSVG: React.FC = () => {
         <text x="1390" y="337" textAnchor="middle" fontSize="13">
           Amazon Cognito + MFA
         </text>
-        <title>{architectureZones[5].description}</title>
+        <title>{architectureZones[5].description[lang]}</title>
       </g>
 
       {/* Connectors */}

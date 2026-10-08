@@ -1,8 +1,13 @@
 export type SlideId = number;
 
+export interface BilingualText {
+  pt: string;
+  en: string;
+}
+
 export interface ISlide {
   id: SlideId;
-  title: string;
+  title: BilingualText;
   component: string;
 }
 

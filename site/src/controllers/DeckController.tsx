@@ -5,6 +5,7 @@ import { useKeyboardNav } from '../hooks/useKeyboardNav';
 import { useTheme } from '../hooks/useTheme';
 import { useAccessibility } from '../hooks/useAccessibility';
 import { useScreenReader } from '../hooks/useScreenReader';
+import { useI18n } from '../i18n/context';
 import { Layout } from '../views/layout/Layout';
 import { Slide01_Capa } from '../views/slides/Slide01_Capa';
 import { Slide02_Roteiro } from '../views/slides/Slide02_Roteiro';
@@ -73,6 +74,7 @@ export const DeckController: React.FC = () => {
   const [accessOpen, setAccessOpen] = useState(false);
   const [autoRead, setAutoRead] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { lang, toggleLang } = useI18n();
   const { hc, toggleHc, textScale, selectTextScale, reduceMotion, toggleReduceMotion } =
     useAccessibility();
   const { supported: srSupported, status: srStatus, speak, pause, resume, stop } = useScreenReader();
@@ -88,10 +90,11 @@ export const DeckController: React.FC = () => {
   // Início (rodapé): volta ao primeiro slide.
   const goHome = useCallback(() => goTo(1), [goTo]);
 
-  // Auto-read the current slide when enabled.
+  // Auto-read the current slide when enabled. Re-reads when language changes
+  // so the spoken text follows the active language.
   useEffect(() => {
     if (autoRead) speak(current);
-  }, [autoRead, current, speak]);
+  }, [autoRead, current, speak, lang]);
 
   useKeyboardNav({
     current,
@@ -110,6 +113,7 @@ export const DeckController: React.FC = () => {
     toggleAccessPanel,
     closeAccessPanel,
     toggleTheme,
+    toggleLang,
     speakSlide,
     stopSpeak: stop,
   });
@@ -129,6 +133,7 @@ export const DeckController: React.FC = () => {
       onCloseOverview={closeOverview}
       theme={theme}
       onToggleTheme={toggleTheme}
+      onToggleLang={toggleLang}
       helpOpen={helpOpen}
       onToggleHelp={toggleHelp}
       onCloseHelp={closeHelp}

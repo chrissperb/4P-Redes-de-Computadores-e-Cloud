@@ -3,6 +3,7 @@ import { ISlide } from '../../models/slide.types';
 import { Theme } from '../../hooks/useTheme';
 import { TextScale } from '../../hooks/useAccessibility';
 import { ScreenReaderStatus } from '../../hooks/useScreenReader';
+import { useI18n } from '../../i18n/context';
 import { HelpOverlay } from '../common/HelpOverlay';
 import { AccessibilityPanel } from '../common/AccessibilityPanel';
 import {
@@ -15,6 +16,7 @@ import {
   MoonIcon,
   SunIcon,
 } from '../../components/icons/Icons';
+import { BrasilFlag, UsFlag } from '../../components/icons/Flags';
 import '../../styles/deck.css';
 import '../../styles/print.css';
 import { cn } from '../../utils/classNames';
@@ -31,6 +33,7 @@ interface LayoutProps {
   onCloseOverview: () => void;
   theme: Theme;
   onToggleTheme: () => void;
+  onToggleLang: () => void;
   helpOpen: boolean;
   onToggleHelp: () => void;
   onCloseHelp: () => void;
@@ -67,6 +70,7 @@ export const Layout: React.FC<LayoutProps> = ({
   onCloseOverview,
   theme,
   onToggleTheme,
+  onToggleLang,
   helpOpen,
   onToggleHelp,
   onCloseHelp,
@@ -92,6 +96,7 @@ export const Layout: React.FC<LayoutProps> = ({
 }) => {
   const progress = ((current - 1) / Math.max(1, total - 1)) * 100;
   const progressStyle = { '--p': `${progress}%` } as React.CSSProperties;
+  const { lang, t, fill } = useI18n();
 
   const overviewRef = useRef<HTMLDivElement>(null);
   const helpRef = useRef<HTMLDivElement>(null);
@@ -127,55 +132,63 @@ export const Layout: React.FC<LayoutProps> = ({
   return (
     <div className="deck-root">
       <div className="sr-only" aria-live="polite">
-        Slide {current} de {total}: {slides[current - 1]?.title}
+        {fill('nav.srLive', { n: current, t: total, title: slides[current - 1]?.title[lang] ?? '' })}
       </div>
       <div className="deck-progress" style={progressStyle} aria-hidden="true" />
       <div className="deck-stage" onClick={(e) => e.stopPropagation()}>
         {children}
       </div>
-      <nav className="deck-nav" aria-label="Navegação do deck">
-        <button onClick={onHome} title="Início — primeiro slide (Home)">
-          <HomeIcon /> Início
+      <nav className="deck-nav" aria-label={lang === 'pt' ? 'Navegação do deck' : 'Deck navigation'}>
+        <button onClick={onHome} title={t('nav.homeTooltip')}>
+          <HomeIcon /> {t('nav.home')}
         </button>
-        <button onClick={onPrev} disabled={current <= 1} title="Anterior (←)">
-          <ArrowLeftIcon /> Anterior
+        <button onClick={onPrev} disabled={current <= 1} title={t('nav.prevTooltip')}>
+          <ArrowLeftIcon /> {t('nav.prev')}
         </button>
         <button
           onClick={onToggleOverview}
           aria-expanded={overviewOpen}
           aria-haspopup="dialog"
-          title="Visão geral (O)"
+          title={t('nav.overviewTooltip')}
         >
-          <GridIcon /> Visão geral ({current}/{total})
+          <GridIcon /> {t('nav.overview')} ({current}/{total})
         </button>
-        <button onClick={onNext} disabled={current >= total} title="Próximo (→)">
-          Próximo <ArrowRightIcon />
+        <button onClick={onNext} disabled={current >= total} title={t('nav.nextTooltip')}>
+          {t('nav.next')} <ArrowRightIcon />
         </button>
-        <button onClick={toggleFullscreen} title="Tela cheia (F)">
-          <ExpandIcon /> Tela cheia
+        <button onClick={toggleFullscreen} title={t('nav.fullscreenTooltip')}>
+          <ExpandIcon /> {t('nav.fullscreen')}
         </button>
         <button
           onClick={onToggleTheme}
           aria-pressed={theme === 'light'}
-          title="Alternar tema claro/escuro (T)"
+          title={t('nav.themeTooltip')}
         >
           {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-          {theme === 'dark' ? 'Claro' : 'Escuro'}
+          {theme === 'dark' ? t('nav.light') : t('nav.dark')}
+        </button>
+        <button
+          onClick={onToggleLang}
+          aria-label={t('nav.langAria')}
+          title={t('nav.langTooltip')}
+        >
+          {lang === 'pt' ? <BrasilFlag /> : <UsFlag />}
+          {lang === 'pt' ? 'EN' : 'PT'}
         </button>
         <button
           onClick={onToggleAccessPanel}
           aria-expanded={accessOpen}
           aria-haspopup="dialog"
-          title="Opções de acessibilidade (A)"
+          title={t('nav.accessTooltip')}
         >
-          <AccessibilityIcon /> Acessibilidade
+          <AccessibilityIcon /> {t('nav.access')}
         </button>
         <button
           onClick={onToggleHelp}
           aria-expanded={helpOpen}
           aria-haspopup="dialog"
-          title="Ajuda (?)"
-          aria-label="Ajuda e atalhos de teclado (?)"
+          title={t('nav.helpTooltip')}
+          aria-label={t('nav.helpAria')}
         >
           ?
         </button>
@@ -186,7 +199,7 @@ export const Layout: React.FC<LayoutProps> = ({
         className={cn('deck-overview', overviewOpen && 'is-open')}
         role="dialog"
         aria-modal="true"
-        aria-label="Visão geral dos slides"
+        aria-label={t('overview.aria')}
         onClick={onCloseOverview}
       >
         <div className="overview-grid" onClick={(e) => e.stopPropagation()}>
@@ -200,8 +213,8 @@ export const Layout: React.FC<LayoutProps> = ({
                 onCloseOverview();
               }}
             >
-              <span className="overview-id">Slide {s.id}</span>
-              <span className="overview-title">{s.title}</span>
+              <span className="overview-id">{fill('overview.slideOf', { n: s.id })}</span>
+              <span className="overview-title">{s.title[lang]}</span>
             </button>
           ))}
         </div>
