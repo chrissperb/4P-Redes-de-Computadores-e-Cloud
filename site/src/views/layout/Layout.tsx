@@ -139,8 +139,8 @@ export const Layout: React.FC<LayoutProps> = ({
         {children}
       </div>
       <nav className="deck-nav" aria-label={lang === 'pt' ? 'Navegação do deck' : 'Deck navigation'}>
-        <button onClick={onHome} title={t('nav.homeTooltip')}>
-          <HomeIcon /> {t('nav.home')}
+        <button className="icon-only" onClick={onHome} title={t('nav.homeTooltip')} aria-label={t('nav.homeAria')}>
+          <HomeIcon />
         </button>
         <button onClick={onPrev} disabled={current <= 1} title={t('nav.prevTooltip')}>
           <ArrowLeftIcon /> {t('nav.prev')}
@@ -151,21 +151,22 @@ export const Layout: React.FC<LayoutProps> = ({
           aria-haspopup="dialog"
           title={t('nav.overviewTooltip')}
         >
-          <GridIcon /> {t('nav.overview')} ({current}/{total})
+          <GridIcon /> {t('nav.overview')}
         </button>
         <button onClick={onNext} disabled={current >= total} title={t('nav.nextTooltip')}>
           {t('nav.next')} <ArrowRightIcon />
         </button>
-        <button onClick={toggleFullscreen} title={t('nav.fullscreenTooltip')}>
-          <ExpandIcon /> {t('nav.fullscreen')}
+        <button className="icon-only" onClick={toggleFullscreen} title={t('nav.fullscreenTooltip')} aria-label={t('nav.fullscreenAria')}>
+          <ExpandIcon />
         </button>
         <button
+          className="icon-only"
           onClick={onToggleTheme}
           aria-pressed={theme === 'light'}
           title={t('nav.themeTooltip')}
+          aria-label={t('nav.themeAria')}
         >
           {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-          {theme === 'dark' ? t('nav.light') : t('nav.dark')}
         </button>
         <button
           onClick={onToggleLang}
@@ -176,12 +177,14 @@ export const Layout: React.FC<LayoutProps> = ({
           {lang === 'pt' ? 'EN' : 'PT'}
         </button>
         <button
+          className="icon-only"
           onClick={onToggleAccessPanel}
           aria-expanded={accessOpen}
           aria-haspopup="dialog"
           title={t('nav.accessTooltip')}
+          aria-label={t('nav.accessAria')}
         >
-          <AccessibilityIcon /> {t('nav.access')}
+          <AccessibilityIcon />
         </button>
         <button
           onClick={onToggleHelp}

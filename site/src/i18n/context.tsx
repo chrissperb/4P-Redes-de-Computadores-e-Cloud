@@ -12,7 +12,7 @@ function getInitialLang(): Lang {
 
 interface I18nContextValue {
   lang: Lang;
-  /** Shortcut for ui keys: `t('nav.home')`. Falls back to the key itself. */
+  /** Shortcut for ui keys: `t('nav.prev')`. Falls back to the key itself. */
   t: (key: string) => string;
   /** Interpolate {n}/{t}/{title} placeholders into a translated template. */
   fill: (key: string, vars: Record<string, string | number>) => string;

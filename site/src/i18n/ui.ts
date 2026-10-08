@@ -5,7 +5,7 @@ export type L = Record<Lang, string>;
 /** UI chrome + a11y copy (nav, overlays, SR status). Slide bodies and diagram
  * labels keep their own bilingual structures near the components. */
 export const ui: Record<string, L> = {
-  'nav.home': { pt: 'Início', en: 'Home' },
+  'nav.homeAria': { pt: 'Início — primeiro slide (Home)', en: 'Home — first slide (Home)' },
   'nav.homeTooltip': { pt: 'Início — primeiro slide (Home)', en: 'Home — first slide (Home)' },
   'nav.prev': { pt: 'Anterior', en: 'Previous' },
   'nav.prevTooltip': { pt: 'Anterior (←)', en: 'Previous (←)' },
@@ -13,12 +13,11 @@ export const ui: Record<string, L> = {
   'nav.nextTooltip': { pt: 'Próximo (→)', en: 'Next (→)' },
   'nav.overview': { pt: 'Visão geral', en: 'Overview' },
   'nav.overviewTooltip': { pt: 'Visão geral (O)', en: 'Overview (O)' },
-  'nav.fullscreen': { pt: 'Tela cheia', en: 'Fullscreen' },
+  'nav.fullscreenAria': { pt: 'Entrar ou sair da tela cheia (F)', en: 'Enter or exit fullscreen (F)' },
   'nav.fullscreenTooltip': { pt: 'Tela cheia (F)', en: 'Fullscreen (F)' },
-  'nav.light': { pt: 'Claro', en: 'Light' },
-  'nav.dark': { pt: 'Escuro', en: 'Dark' },
+  'nav.themeAria': { pt: 'Alternar tema claro ou escuro (T)', en: 'Toggle light or dark theme (T)' },
   'nav.themeTooltip': { pt: 'Alternar tema claro/escuro (T)', en: 'Toggle light/dark theme (T)' },
-  'nav.access': { pt: 'Acessibilidade', en: 'Accessibility' },
+  'nav.accessAria': { pt: 'Opções de acessibilidade (A)', en: 'Accessibility options (A)' },
   'nav.accessTooltip': { pt: 'Opções de acessibilidade (A)', en: 'Accessibility options (A)' },
   'nav.helpAria': { pt: 'Ajuda e atalhos de teclado (?)', en: 'Help and keyboard shortcuts (?)' },
   'nav.helpTooltip': { pt: 'Ajuda (?)', en: 'Help (?)' },
