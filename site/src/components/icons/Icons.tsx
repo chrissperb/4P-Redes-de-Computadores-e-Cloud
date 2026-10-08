@@ -61,3 +61,11 @@ export const XIcon: React.FC<IconProps> = ({ size = 16 }) => (
     <path d="M18 6L6 18M6 6l12 12" />
   </svg>
 );
+
+export const AccessibilityIcon: React.FC<IconProps> = ({ size = 16 }) => (
+  <svg {...base} width={size} height={size}>
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="6.5" r="1.6" />
+    <path d="M12 9.4v5.2M12 11.4l-4.2 1.9M12 11.4l4.2 1.9M12 14.6l-3.1 3.6M12 14.6l3.1 3.6" />
+  </svg>
+);

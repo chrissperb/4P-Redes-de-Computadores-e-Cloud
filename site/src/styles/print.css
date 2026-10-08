@@ -15,7 +15,8 @@
   .deck-progress,
   .deck-nav,
   .deck-overview,
-  .deck-help {
+  .deck-help,
+  .deck-access {
     display: none !important;
   }
 
@@ -69,5 +70,12 @@
 
   .diagram-wrap svg {
     max-height: 78vh;
+  }
+
+  .slide-content,
+  .help-panel,
+  .overview-grid,
+  .access-panel {
+    zoom: 1 !important;
   }
 }

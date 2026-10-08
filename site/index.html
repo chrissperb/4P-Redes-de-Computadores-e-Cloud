@@ -10,6 +10,18 @@
         if (savedTheme === 'light' || savedTheme === 'dark') {
           document.documentElement.dataset.theme = savedTheme;
         }
+        var savedHc = localStorage.getItem('sdmd-hc');
+        if (savedHc === 'on' || savedHc === 'off') {
+          document.documentElement.dataset.hc = savedHc;
+        }
+        var savedScale = localStorage.getItem('sdmd-text-scale');
+        if (savedScale === '1' || savedScale === '1.25' || savedScale === '1.5') {
+          document.documentElement.dataset.textScale = savedScale;
+        }
+        var savedMotion = localStorage.getItem('sdmd-motion');
+        if (savedMotion === 'on' || savedMotion === 'off') {
+          document.documentElement.dataset.motion = savedMotion;
+        }
       } catch (e) {}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />

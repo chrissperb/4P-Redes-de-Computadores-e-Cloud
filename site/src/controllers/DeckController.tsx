@@ -1,8 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { slidesData } from '../data/slidesData';
 import { useHashSync } from '../hooks/useHashSync';
 import { useKeyboardNav } from '../hooks/useKeyboardNav';
 import { useTheme } from '../hooks/useTheme';
+import { useAccessibility } from '../hooks/useAccessibility';
+import { useScreenReader } from '../hooks/useScreenReader';
 import { Layout } from '../views/layout/Layout';
 import { Slide01_Capa } from '../views/slides/Slide01_Capa';
 import { Slide02_Roteiro } from '../views/slides/Slide02_Roteiro';
@@ -68,11 +70,26 @@ export const DeckController: React.FC = () => {
   const { current, next, prev, first, last, goTo, total } = useHashSync();
   const [overviewOpen, setOverviewOpen] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
+  const [accessOpen, setAccessOpen] = useState(false);
+  const [autoRead, setAutoRead] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { hc, toggleHc, textScale, selectTextScale, reduceMotion, toggleReduceMotion } =
+    useAccessibility();
+  const { supported: srSupported, status: srStatus, speak, pause, resume, stop } = useScreenReader();
+
   const toggleOverview = useCallback(() => setOverviewOpen((o) => !o), []);
   const closeOverview = useCallback(() => setOverviewOpen(false), []);
   const toggleHelp = useCallback(() => setHelpOpen((h) => !h), []);
   const closeHelp = useCallback(() => setHelpOpen(false), []);
+  const toggleAccessPanel = useCallback(() => setAccessOpen((a) => !a), []);
+  const closeAccessPanel = useCallback(() => setAccessOpen(false), []);
+  const toggleAutoRead = useCallback(() => setAutoRead((a) => !a), []);
+  const speakSlide = useCallback(() => speak(current), [speak, current]);
+
+  // Auto-read the current slide when enabled.
+  useEffect(() => {
+    if (autoRead) speak(current);
+  }, [autoRead, current, speak]);
 
   useKeyboardNav({
     current,
@@ -83,11 +100,16 @@ export const DeckController: React.FC = () => {
     last,
     overviewOpen,
     helpOpen,
+    accessOpen,
     toggleOverview,
     closeOverview,
     closeHelp,
     toggleHelp,
+    toggleAccessPanel,
+    closeAccessPanel,
     toggleTheme,
+    speakSlide,
+    stopSpeak: stop,
   });
 
   const CurrentSlide = slideMap[current] ?? slideMap[1];
@@ -108,6 +130,23 @@ export const DeckController: React.FC = () => {
       helpOpen={helpOpen}
       onToggleHelp={toggleHelp}
       onCloseHelp={closeHelp}
+      accessOpen={accessOpen}
+      onToggleAccessPanel={toggleAccessPanel}
+      onCloseAccessPanel={closeAccessPanel}
+      hc={hc}
+      onToggleHc={toggleHc}
+      textScale={textScale}
+      onSelectTextScale={selectTextScale}
+      reduceMotion={reduceMotion}
+      onToggleReduceMotion={toggleReduceMotion}
+      srSupported={srSupported}
+      srStatus={srStatus}
+      onSpeak={speakSlide}
+      onPause={pause}
+      onResume={resume}
+      onStop={stop}
+      autoRead={autoRead}
+      onToggleAutoRead={toggleAutoRead}
     >
       <CurrentSlide />
     </Layout>

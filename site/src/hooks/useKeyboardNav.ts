@@ -9,11 +9,16 @@ interface UseKeyboardNavOpts {
   last: () => void;
   overviewOpen: boolean;
   helpOpen: boolean;
+  accessOpen: boolean;
   toggleOverview: () => void;
   closeOverview: () => void;
   closeHelp: () => void;
   toggleHelp: () => void;
+  toggleAccessPanel: () => void;
+  closeAccessPanel: () => void;
   toggleTheme: () => void;
+  speakSlide: () => void;
+  stopSpeak: () => void;
 }
 
 export function useKeyboardNav({
@@ -25,11 +30,16 @@ export function useKeyboardNav({
   last,
   overviewOpen,
   helpOpen,
+  accessOpen,
   toggleOverview,
   closeOverview,
   closeHelp,
   toggleHelp,
+  toggleAccessPanel,
+  closeAccessPanel,
   toggleTheme,
+  speakSlide,
+  stopSpeak,
 }: UseKeyboardNavOpts) {
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -49,11 +59,12 @@ export function useKeyboardNav({
       }
 
       // With an overlay open, only Escape acts (closes it).
-      if (overviewOpen || helpOpen) {
+      if (overviewOpen || helpOpen || accessOpen) {
         if (e.key === 'Escape') {
           e.preventDefault();
           if (overviewOpen) closeOverview();
-          else closeHelp();
+          else if (helpOpen) closeHelp();
+          else closeAccessPanel();
         }
         return;
       }
@@ -100,6 +111,21 @@ export function useKeyboardNav({
           e.preventDefault();
           toggleTheme();
           break;
+        case 'a':
+        case 'A':
+          e.preventDefault();
+          toggleAccessPanel();
+          break;
+        case 'r':
+        case 'R':
+          e.preventDefault();
+          speakSlide();
+          break;
+        case 's':
+        case 'S':
+          e.preventDefault();
+          stopSpeak();
+          break;
         default:
           break;
       }
@@ -116,10 +142,15 @@ export function useKeyboardNav({
     last,
     overviewOpen,
     helpOpen,
+    accessOpen,
     toggleOverview,
     closeOverview,
     closeHelp,
     toggleHelp,
+    toggleAccessPanel,
+    closeAccessPanel,
     toggleTheme,
+    speakSlide,
+    stopSpeak,
   ]);
 }

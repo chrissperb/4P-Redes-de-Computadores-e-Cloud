@@ -12,6 +12,9 @@ const SHORTCUTS: Array<{ keys: string[]; action: string }> = [
   { keys: ['Espaço', 'PgDn', 'PgUp'], action: 'Navegar entre slides' },
   { keys: ['Home', 'End'], action: 'Ir ao primeiro / último slide' },
   { keys: ['O'], action: 'Abrir / fechar visão geral (mapa de slides)' },
+  { keys: ['A'], action: 'Abrir / fechar opções de acessibilidade' },
+  { keys: ['R'], action: 'Ler o slide atual em voz alta' },
+  { keys: ['S'], action: 'Parar a leitura' },
   { keys: ['F'], action: 'Entrar / sair da tela cheia' },
   { keys: ['T'], action: 'Alternar tema claro / escuro' },
   { keys: ['?', 'H'], action: 'Abrir / fechar esta ajuda' },
@@ -22,7 +25,7 @@ const TIPS: string[] = [
   'Use os botões na parte inferior da tela ou o teclado para navegar.',
   'A visão geral (botão "Visão geral" ou tecla O) lista todos os slides de uma vez.',
   'Na tela de projeção, use tela cheia (tecla F) para melhor aproveitamento.',
-  'Prefere fundo claro? Alterne com o botão de sol/lua ou a tecla T.',
+  'Precisa de ajustes visuais ou auditivos? Use o painel de acessibilidade (tecla A): alto contraste, letras maiores, reduzir movimento e leitura em voz alta.',
   'Imprima com Ctrl+P para gerar um PDF com um slide por página.',
 ];
 

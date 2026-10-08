@@ -1,8 +1,12 @@
 import React, { ReactNode, useEffect, useRef } from 'react';
 import { ISlide } from '../../models/slide.types';
 import { Theme } from '../../hooks/useTheme';
+import { TextScale } from '../../hooks/useAccessibility';
+import { ScreenReaderStatus } from '../../hooks/useScreenReader';
 import { HelpOverlay } from '../common/HelpOverlay';
+import { AccessibilityPanel } from '../common/AccessibilityPanel';
 import {
+  AccessibilityIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
   ExpandIcon,
@@ -29,6 +33,23 @@ interface LayoutProps {
   helpOpen: boolean;
   onToggleHelp: () => void;
   onCloseHelp: () => void;
+  accessOpen: boolean;
+  onToggleAccessPanel: () => void;
+  onCloseAccessPanel: () => void;
+  hc: boolean;
+  onToggleHc: () => void;
+  textScale: TextScale;
+  onSelectTextScale: (scale: TextScale) => void;
+  reduceMotion: boolean;
+  onToggleReduceMotion: () => void;
+  srSupported: boolean;
+  srStatus: ScreenReaderStatus;
+  onSpeak: () => void;
+  onPause: () => void;
+  onResume: () => void;
+  onStop: () => void;
+  autoRead: boolean;
+  onToggleAutoRead: () => void;
   children: ReactNode;
 }
 
@@ -47,6 +68,23 @@ export const Layout: React.FC<LayoutProps> = ({
   helpOpen,
   onToggleHelp,
   onCloseHelp,
+  accessOpen,
+  onToggleAccessPanel,
+  onCloseAccessPanel,
+  hc,
+  onToggleHc,
+  textScale,
+  onSelectTextScale,
+  reduceMotion,
+  onToggleReduceMotion,
+  srSupported,
+  srStatus,
+  onSpeak,
+  onPause,
+  onResume,
+  onStop,
+  autoRead,
+  onToggleAutoRead,
   children,
 }) => {
   const progress = ((current - 1) / Math.max(1, total - 1)) * 100;
@@ -54,6 +92,7 @@ export const Layout: React.FC<LayoutProps> = ({
 
   const overviewRef = useRef<HTMLDivElement>(null);
   const helpRef = useRef<HTMLDivElement>(null);
+  const accessRef = useRef<HTMLDivElement>(null);
 
   // Move focus into the opened overlay; tab order stays inside it (aria-modal).
   useEffect(() => {
@@ -69,6 +108,13 @@ export const Layout: React.FC<LayoutProps> = ({
       first?.focus();
     }
   }, [helpOpen]);
+
+  useEffect(() => {
+    if (accessOpen) {
+      const first = accessRef.current?.querySelector<HTMLElement>('button');
+      first?.focus();
+    }
+  }, [accessOpen]);
 
   const toggleFullscreen = () => {
     if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
@@ -111,6 +157,14 @@ export const Layout: React.FC<LayoutProps> = ({
           {theme === 'dark' ? 'Claro' : 'Escuro'}
         </button>
         <button
+          onClick={onToggleAccessPanel}
+          aria-expanded={accessOpen}
+          aria-haspopup="dialog"
+          title="Opções de acessibilidade (A)"
+        >
+          <AccessibilityIcon /> Acessibilidade
+        </button>
+        <button
           onClick={onToggleHelp}
           aria-expanded={helpOpen}
           aria-haspopup="dialog"
@@ -149,6 +203,27 @@ export const Layout: React.FC<LayoutProps> = ({
 
       <div ref={helpRef}>
         <HelpOverlay open={helpOpen} onClose={onCloseHelp} />
+      </div>
+
+      <div ref={accessRef}>
+        <AccessibilityPanel
+          open={accessOpen}
+          onClose={onCloseAccessPanel}
+          hc={hc}
+          onToggleHc={onToggleHc}
+          textScale={textScale}
+          onSelectTextScale={onSelectTextScale}
+          reduceMotion={reduceMotion}
+          onToggleReduceMotion={onToggleReduceMotion}
+          srSupported={srSupported}
+          srStatus={srStatus}
+          onSpeak={onSpeak}
+          onPause={onPause}
+          onResume={onResume}
+          onStop={onStop}
+          autoRead={autoRead}
+          onToggleAutoRead={onToggleAutoRead}
+        />
       </div>
     </div>
   );
