@@ -283,7 +283,7 @@ body {
   letter-spacing: -0.01em;
 }
 
-.phase-list {
+.phase-card .phase-list {
   margin: 0;
   padding-left: 0;
   list-style: none;
@@ -292,14 +292,14 @@ body {
   gap: clamp(6px, 0.8vw, 10px);
 }
 
-.phase-item {
+.phase-card .phase-item {
   font-size: clamp(12px, 1.4vw, 18px);
   display: flex;
   align-items: flex-start;
   gap: clamp(8px, 1vw, 12px);
 }
 
-.phase-num {
+.phase-card .phase-num {
   flex: 0 0 auto;
   min-width: clamp(18px, 1.6vw, 24px);
   height: clamp(18px, 1.6vw, 24px);
