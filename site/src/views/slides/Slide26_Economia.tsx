@@ -5,7 +5,7 @@ import { useI18n } from '../../i18n/context';
 
 const L = {
   heading: {
-    pt: 'Aspectos Econômicos – Modelos de Contratação (Unid. IV, p. 36)',
+    pt: 'Aspectos Econômicos – Modelos de Contratação (Unidade IV, p. 36)',
     en: 'Economic Aspects – Contracting Models (Unit IV, p. 36)',
   },
   liPaygo: {
@@ -25,12 +25,8 @@ const L = {
     en: 'Important Note',
   },
   noteMain: {
-    pt: <>A presente proposta é <strong>arquitetural e conceitual</strong> (descritiva). <strong>Não há implantação real dos serviços AWS</strong>. Portanto, <strong>não existe custo de execução associado a este trabalho acadêmico</strong>. A solução será publicada exclusivamente via <strong>GitHub Pages</strong> (SPA estática), sem consumo de recursos de nuvem computacional.</>,
+    pt: <>A presente proposta é <strong>arquitetural e conceitual</strong> (descritiva). <strong>Não há implantação real dos serviços AWS</strong>. Portanto, <strong>não existe custo de execução associado a este trabalho puramente acadêmico</strong>. A solução será publicada exclusivamente via <strong>GitHub Pages</strong> (SPA estática), sem consumo de recursos de nuvem computacional.</>,
     en: <>The present proposal is <strong>architectural and conceptual</strong> (descriptive). <strong>There is no real deployment of AWS services</strong>. Therefore, <strong>there is no execution cost associated with this academic work</strong>. The solution will be published exclusively via <strong>GitHub Pages</strong> (static SPA), with no consumption of cloud computing resources.</>,
-  },
-  noteSecond: {
-    pt: 'Essa distinção reforça a coerência entre o escopo proposto, os entregáveis e a justificativa da solução (Critério 2).',
-    en: 'This distinction reinforces the coherence between the proposed scope, the deliverables and the justification of the solution (Criterion 2).',
   },
 };
 
@@ -51,9 +47,6 @@ export const Slide26_Economia: React.FC = () => {
           <h2>{L.headingNote[lang]}</h2>
           <p>
             {L.noteMain[lang]}
-          </p>
-          <p style={{ color: 'var(--muted)', marginTop: 'clamp(6px,1vw,10px)' }}>
-            {L.noteSecond[lang]}
           </p>
         </div>
       </div>

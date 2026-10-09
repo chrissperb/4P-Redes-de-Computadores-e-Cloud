@@ -5,11 +5,11 @@ import { useI18n } from '../../i18n/context';
 
 const L = {
   heading: {
-    pt: 'Criptografia – Repouso, Trânsito e Uso (Req. 5)',
-    en: 'Encryption – At Rest, In Transit and In Use (Req. 5)',
+    pt: 'Criptografia – Repouso, Trânsito e Uso',
+    en: 'Encryption – At Rest, In Transit and In Use',
   },
   introText: {
-    pt: 'Conforme Unid. III, p. 25: criptografia protege informações ',
+    pt: 'Conforme Unidade III, p. 25: criptografia protege informações ',
     en: 'As per Unit III, p. 25: encryption protects information ',
   },
   introRest: {

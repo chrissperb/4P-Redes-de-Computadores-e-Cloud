@@ -106,13 +106,6 @@ Repo: `https://github.com/chrissperb/4P-Redes-de-Computadores-e-Cloud`
 | 4. Componentes + funcionalidades | 13–18 |
 | 5. Principais benefícios | 25 |
 
-Critérios de avaliação cobertos em 01, 03–04, 07–09, 12, 20–24, 27.
-
-## Material de apoio (raiz do repo)
-
-- `Avaliação Final.docx` – enunciado do estudo de caso
-- `redes_de_computadores_e_cloud_unidade_{i,ii,iii,iv}.pdf` – material didático da disciplina
-
 ## Observação
 
 Proposta **arquitetural/conceitual**. Serviços AWS citados como **exemplos de implementação** dos conceitos das Unidades I–IV (fundamentação vendor-agnóstica). Sem implantação em produção.

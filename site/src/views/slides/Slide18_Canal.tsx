@@ -13,7 +13,7 @@ const L = {
     en: 'Amazon Route 53',
   },
   route53Text: {
-    pt: ': DNS gerenciado — resolução de nomes (conceitos DNS – Unid. I).',
+    pt: ': DNS gerenciado — resolução de nomes (conceitos DNS – Unidade I).',
     en: ': Managed DNS — name resolution (DNS concepts – Unit I).',
   },
   cloudFrontLabel: {
@@ -21,7 +21,7 @@ const L = {
     en: 'Amazon CloudFront',
   },
   cloudFrontText: {
-    pt: ': CDN para entrega otimizada, reduz latência e contribui p/ segurança/controle de borda.',
+    pt: ': CDN para entrega otimizada, reduz latência e contribui para segurança/controle de borda.',
     en: ': CDN for optimized delivery; reduces latency and contributes to security/edge control.',
   },
   wafLabel: {
@@ -45,7 +45,7 @@ const L = {
     en: 'MFA',
   },
   cognitoText2: {
-    pt: ' reforça autenticação multifator (conceito de autenticação – Unid. II, p. 54+; componentes de segurança – Unid. III, p. 24). Aplica princípio de verificação por múltiplos fatores.',
+    pt: ' reforça autenticação multifator (conceito de autenticação – Unidade II, p. 54+; componentes de segurança – Unidade III, p. 24). Aplica princípio de verificação por múltiplos fatores.',
     en: ' strengthens multifactor authentication (authentication concept – Unit II, p. 54+; security components – Unit III, p. 24). Applies the multiple-factor verification principle.',
   },
   ingressLabel: {

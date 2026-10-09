@@ -5,8 +5,8 @@ import { useI18n } from '../../i18n/context';
 
 const L = {
   heading: {
-    pt: 'LGPD – Princípios Aplicados à Solução (Req. 5)',
-    en: 'LGPD – Principles Applied to the Solution (Req. 5)',
+    pt: 'LGPD – Princípios Aplicados à Solução',
+    en: 'LGPD – Principles Applied to the Solution',
   },
   intro: {
     pt: <>Foco exclusivo em <strong>LGPD</strong>, conforme solicitado. Mapeamento <strong>arquitetural</strong> dos princípios aos controles propostos.</>,
@@ -69,8 +69,8 @@ const L = {
     en: <><strong>S3 Lifecycle</strong> (conceptual) and retention/disposal policies, aligned with the lifecycle of documents/artifacts.</>,
   },
   note: {
-    pt: <>Abordagem <strong>pragmática e conceitual</strong>: visa aplicar princípios arquiteturalmente, contribuindo para atender ao <strong>Req. 5</strong> e ao <strong>Critério 3</strong> (aderência às necessidades do cliente).</>,
-    en: <>A <strong>pragmatic and conceptual</strong> approach: it aims to apply the principles architecturally, contributing to meeting <strong>Req. 5</strong> and <strong>Criterion 3</strong> (fit with the client's needs).</>,
+    pt: <>Abordagem <strong>pragmática e conceitual</strong>: visa aplicar princípios arquiteturalmente, contribuindo para atender ao <strong>Requisito 5</strong> e ao <strong>Critério 3</strong> (aderência às necessidades do cliente).</>,
+    en: <>A <strong>pragmatic and conceptual</strong> approach: it aims to apply the principles architecturally, contributing to meeting <strong>Requisite 5</strong> and <strong>Criterion 3</strong> (fit with the client's needs).</>,
   },
 };
 

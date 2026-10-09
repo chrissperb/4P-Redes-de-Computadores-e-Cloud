@@ -17,7 +17,7 @@ const L = {
     en: <><strong>AWS Step Functions</strong>: orchestrates the <strong>digital account opening flow</strong> (states, retries, fault handling) — promotes process consistency.</>,
   },
   item3: {
-    pt: <><strong>AWS Lambda / ECS</strong>: lógica de negócio sem servidor/orquestrada (PaaS) para processamento de etapas do onboarding (conforme modelos de serviço – Unid. III).</>,
+    pt: <><strong>AWS Lambda / ECS</strong>: lógica de negócio sem servidor/orquestrada (PaaS) para processamento de etapas do onboarding (conforme modelos de serviço – Unidade III).</>,
     en: <><strong>AWS Lambda / ECS</strong>: serverless/orchestrated business logic (PaaS) for processing onboarding steps (as per service models – Unit III).</>,
   },
   item4: {

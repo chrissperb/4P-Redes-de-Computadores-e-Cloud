@@ -5,8 +5,8 @@ import { useI18n } from '../../i18n/context';
 
 const L = {
   heading: {
-    pt: 'IAM, Políticas de Segurança e MFA (Req. 5)',
-    en: 'IAM, Security Policies and MFA (Req. 5)',
+    pt: 'IAM, Políticas de Segurança e MFA',
+    en: 'IAM, Security Policies and MFA',
   },
   iamLabel: {
     pt: 'IAM (Identity and Access Management)',
@@ -21,7 +21,7 @@ const L = {
     en: 'who/what',
   },
   iamText2: {
-    pt: ' pode acessar recursos, com permissões refinadas e centralizadas (Unid. III, p. 23). Aplicação do ',
+    pt: ' pode acessar recursos, com permissões refinadas e centralizadas (Unidade III, p. 23). Aplicação do ',
     en: ' can access resources, with refined and centralized permissions (Unit III, p. 23). Application of the ',
   },
   iamLeast: {
@@ -37,7 +37,7 @@ const L = {
     en: 'Security Policies',
   },
   policiesText: {
-    pt: ': conjunto de princípios/diretrizes que orientam a estratégia de segurança (Unid. III, p. 24). Traduzidas em políticas de acesso, configurações seguras e rastreabilidade.',
+    pt: ': conjunto de princípios/diretrizes que orientam a estratégia de segurança (Unidade III, p. 24). Traduzidas em políticas de acesso, configurações seguras e rastreabilidade.',
     en: ': set of principles/guidelines that guide the security strategy (Unit III, p. 24). Translated into access policies, secure configurations and traceability.',
   },
   mfaLabel: {
@@ -45,7 +45,7 @@ const L = {
     en: 'MFA (Multifactor Authentication)',
   },
   mfaText1: {
-    pt: ': processo de login em etapas (além da senha). Reduz risco de acesso não autorizado em caso de comprometimento de credenciais (Unid. III, pp. 24–25). Aplicado no ',
+    pt: ': processo de login em etapas (além da senha). Reduz risco de acesso não autorizado em caso de comprometimento de credenciais (Unidade III, pp. 24–25). Aplicado no ',
     en: ': staged login process (beyond the password). Reduces the risk of unauthorized access in case of credential compromise (Unit III, pp. 24–25). Applied in ',
   },
   cognitoLabel: {
@@ -61,7 +61,7 @@ const L = {
     en: 'Defense in depth',
   },
   depthText: {
-    pt: ': autenticação/autorização em múltiplas camadas (conceito de Segurança de Redes – Unid. II, p. 40+).',
+    pt: ': autenticação/autorização em múltiplas camadas (conceito de Segurança de Redes – Unidade II, p. 40+).',
     en: ': authentication/authorization on multiple layers (Network Security concept – Unit II, p. 40+).',
   },
 };

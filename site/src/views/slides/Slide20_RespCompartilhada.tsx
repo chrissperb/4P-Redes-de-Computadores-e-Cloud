@@ -6,8 +6,8 @@ import { useI18n } from '../../i18n/context';
 
 const L = {
   headingModel: {
-    pt: 'Modelo de Responsabilidade Compartilhada (Req. 5)',
-    en: 'Shared Responsibility Model (Req. 5)',
+    pt: 'Modelo de Responsabilidade Compartilhada',
+    en: 'Shared Responsibility Model',
   },
   respIntro: {
     pt: 'Conceito central em Segurança em Cloud: ',
@@ -18,7 +18,7 @@ const L = {
     en: '"the provider operates, manages and controls the components of the host operating system and the virtualization layer down to physical security; the customer is responsible for what it places in the cloud"',
   },
   respCite: {
-    pt: ' (Unid. III, pp. 22–23).',
+    pt: ' (Unidade III, pp. 22–23).',
     en: ' (Unit III, pp. 22–23).',
   },
   headingAws: {

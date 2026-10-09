@@ -43,7 +43,7 @@ const L = {
   aws: { pt: 'AWS', en: 'AWS' },
   r3c2b: { pt: ' (sa-east-1)', en: ' (sa-east-1)' },
   r3c3: {
-    pt: 'Ecossistema maduro, compatível com integração privada (Direct Connect), narrativa sólida p/ justificativa.',
+    pt: 'Ecossistema maduro, compatível com integração privada (Direct Connect), narrativa sólida para justificativa.',
     en: 'Mature ecosystem, compatible with private integration (Direct Connect), solid narrative for the rationale.',
   },
   r3c4: {
@@ -67,7 +67,7 @@ const L = {
 
   r5c1: { pt: '5. Segurança aplicável', en: '5. Applicable security' },
   r5c2: {
-    pt: 'Resp. compartilhada, IAM/MFA, criptografia (repouso/trânsito/uso), auditoria/monitoração (LGPD por princípios)',
+    pt: 'Responsabilidade compartilhada, IAM/MFA, criptografia (repouso/trânsito/uso), auditoria/monitoração (LGPD por princípios)',
     en: 'Shared responsibility, IAM/MFA, encryption (at rest/in transit/in use), auditing/monitoring (LGPD via principles)',
   },
   r5c3a: { pt: 'Abordagem ', en: 'A ' },

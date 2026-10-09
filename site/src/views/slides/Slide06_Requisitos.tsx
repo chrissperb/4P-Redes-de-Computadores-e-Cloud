@@ -6,8 +6,8 @@ import { useI18n } from '../../i18n/context';
 
 const L = {
   requirementsTitle: {
-    pt: 'Requisitos da Solução (Deliv. 1)',
-    en: 'Solution Requirements (Deliv. 1)',
+    pt: 'Requisitos da Solução',
+    en: 'Solution Requirements',
   },
   li1a: { pt: 'A empresa possui sistemas de ', en: 'The company has ' },
   sapErp: { pt: 'SAP ERP', en: 'SAP ERP' },

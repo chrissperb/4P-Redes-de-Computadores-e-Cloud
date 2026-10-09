@@ -10,8 +10,8 @@ const L = {
     en: 'Components and Functions',
   },
   item1: {
-    pt: <><strong>Salesforce CRM (SaaS)</strong>: serviço disponibilizado diretamente pela Salesforce (Req. 2). Consumido sob demanda, modelo <strong>SaaS</strong> (Unid. III).</>,
-    en: <><strong>Salesforce CRM (SaaS)</strong>: service provided directly by Salesforce (Req. 2). Consumed on demand, <strong>SaaS</strong> model (Unit III).</>,
+    pt: <><strong>Salesforce CRM (SaaS)</strong>: serviço disponibilizado diretamente pela Salesforce (Requisito 2). Consumido sob demanda, modelo <strong>SaaS</strong> (Unidade III).</>,
+    en: <><strong>Salesforce CRM (SaaS)</strong>: service provided directly by Salesforce (Requisite 2). Consumed on demand, <strong>SaaS</strong> model (Unit III).</>,
   },
   item2: {
     pt: <><strong>Integração server-side</strong>: comunicação realizada pelo <strong>núcleo de onboarding</strong> (backend), não pelo cliente (browser). Evita exposição de credenciais/secrets.</>,
@@ -22,8 +22,8 @@ const L = {
     en: <><strong>Egress-controlled traffic</strong>: authorized flows, with adequate authentication/authorization in the integration.</>,
   },
   item4: {
-    pt: <><strong>Interligação entre sistemas</strong>: materializa o Req. 4 (todos os sistemas interligados e se comunicando entre si), mantendo coerência com o modelo híbrido.</>,
-    en: <><strong>Interconnection between systems</strong>: materializes Req. 4 (all systems interconnected and communicating with one another), maintaining consistency with the hybrid model.</>,
+    pt: <><strong>Interligação entre sistemas</strong>: materializa o Requisito 4 (todos os sistemas interligados e se comunicando entre si), mantendo coerência com o modelo híbrido.</>,
+    en: <><strong>Interconnection between systems</strong>: materializes Requisite 4 (all systems interconnected and communicating with one another), maintaining consistency with the hybrid model.</>,
   },
 };
 

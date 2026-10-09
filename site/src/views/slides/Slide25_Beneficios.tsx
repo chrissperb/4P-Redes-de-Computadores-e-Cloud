@@ -17,8 +17,8 @@ const L = {
     en: <><strong>Full fit with the constraints</strong>: keeps SAP ERP <strong>on-premise</strong>, integrates Salesforce (SaaS), runs the solution on public cloud — covers all 5 requirements (Criterion 3).</>,
   },
   liInterop: {
-    pt: <><strong>Interoperabilidade controlada</strong>: todos os sistemas interligados com comunicações definidas e autorizadas (Req. 4).</>,
-    en: <><strong>Controlled interoperability</strong>: all systems interconnected with defined and authorized communications (Req. 4).</>,
+    pt: <><strong>Interoperabilidade controlada</strong>: todos os sistemas interligados com comunicações definidas e autorizadas (Requisito 4).</>,
+    en: <><strong>Controlled interoperability</strong>: all systems interconnected with defined and authorized communications (Requisite 4).</>,
   },
   liAgility: {
     pt: <><strong>Agilidade e time-to-market</strong>: orquestração (Step Functions) + PaaS reduz complexidade, acelera jornada de abertura de contas.</>,

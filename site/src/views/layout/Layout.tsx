@@ -102,7 +102,6 @@ export const Layout: React.FC<LayoutProps> = ({
   const helpRef = useRef<HTMLDivElement>(null);
   const accessRef = useRef<HTMLDivElement>(null);
 
-  // Move focus into the opened overlay; tab order stays inside it (aria-modal).
   useEffect(() => {
     if (overviewOpen) {
       const first = overviewRef.current?.querySelector<HTMLElement>('.overview-card');

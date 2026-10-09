@@ -10,8 +10,8 @@ const L = {
     en: 'Components and Functions',
   },
   item1: {
-    pt: <><strong>SAP ERP (on-premise)</strong>: sistema transacional da empresa. Mantido <strong>in loco</strong> por questões de segurança (Req. 1). Não exposto diretamente à Internet.</>,
-    en: <><strong>SAP ERP (on-premise)</strong>: the company's transactional system. Kept <strong>on-site</strong> for security reasons (Req. 1). Not directly exposed to the Internet.</>,
+    pt: <><strong>SAP ERP (on-premise)</strong>: sistema transacional da empresa. Mantido <strong>in loco</strong> por questões de segurança (Requisito 1). Não exposto diretamente à Internet.</>,
+    en: <><strong>SAP ERP (on-premise)</strong>: the company's transactional system. Kept <strong>on-site</strong> for security reasons (Requisite 1). Not directly exposed to the Internet.</>,
   },
   item2: {
     pt: <><strong>Agências Físicas</strong>: pontos de atendimento. Interação com processos internos conforme modelo atual.</>,
@@ -22,7 +22,7 @@ const L = {
     en: <><strong>Controlled boundary</strong>: communication with the public cloud occurs <strong>exclusively</strong> via <strong>AWS Direct Connect</strong> (dedicated private link), reducing the attack surface.</>,
   },
   item4: {
-    pt: <><strong>Alinhamento conceitual</strong>: arquitetura híbrida (Unid. IV) respeitando restrições explícitas do cliente.</>,
+    pt: <><strong>Alinhamento conceitual</strong>: arquitetura híbrida (Unidade IV) respeitando restrições explícitas do cliente.</>,
     en: <><strong>Conceptual alignment</strong>: hybrid architecture (Unit IV) respecting the client's explicit constraints.</>,
   },
 };

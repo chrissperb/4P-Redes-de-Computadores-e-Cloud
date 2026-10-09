@@ -26,15 +26,15 @@ const L = {
   },
   ref5: {
     pt: <>AWS. <em>Amazon Web Services Documentation</em>. Disponível em: <a href="https://docs.aws.amazon.com/" target="_blank" rel="noopener noreferrer">https://docs.aws.amazon.com/</a> (referência técnica conceitual).</>,
-    en: <>AWS. <em>Amazon Web Services Documentation</em>. Disponível em: <a href="https://docs.aws.amazon.com/" target="_blank" rel="noopener noreferrer">https://docs.aws.amazon.com/</a> (conceptual technical reference).</>,
+    en: <>AWS. <em>Amazon Web Services Documentation</em>. Available at: <a href="https://docs.aws.amazon.com/" target="_blank" rel="noopener noreferrer">https://docs.aws.amazon.com/</a> (conceptual technical reference).</>,
   },
   ref6: {
     pt: <>AWS Well-Architected Framework. Disponível em: <a href="https://docs.aws.amazon.com/wellarchitected/" target="_blank" rel="noopener noreferrer">https://docs.aws.amazon.com/wellarchitected/</a>.</>,
-    en: <>AWS Well-Architected Framework. Disponível em: <a href="https://docs.aws.amazon.com/wellarchitected/" target="_blank" rel="noopener noreferrer">https://docs.aws.amazon.com/wellarchitected/</a>.</>,
+    en: <>AWS Well-Architected Framework. Available at: <a href="https://docs.aws.amazon.com/wellarchitected/" target="_blank" rel="noopener noreferrer">https://docs.aws.amazon.com/wellarchitected/</a>.</>,
   },
   ref7: {
     pt: <>BRASIL. <strong>Lei nº 13.709/2018</strong> – Lei Geral de Proteção de Dados Pessoais (LGPD).</>,
-    en: <>BRASIL. <strong>Lei nº 13.709/2018</strong> – Lei Geral de Proteção de Dados Pessoais (LGPD).</>,
+    en: <>BRASIL. <strong>Law nº 13.709/2018</strong> – General Data Protection Law (LGPD).</>,
   },
   note: {
     pt: <>Todas as decisões arquiteturais foram fundamentadas, prioritariamente, no <strong>material didático</strong> das quatro unidades.</>,

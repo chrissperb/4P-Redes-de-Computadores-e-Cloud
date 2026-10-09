@@ -6,8 +6,8 @@ import { useI18n } from '../../i18n/context';
 
 const L = {
   heading: {
-    pt: 'Fluxo End-to-End (Deliv. 2)',
-    en: 'End-to-End Flow (Deliv. 2)',
+    pt: 'Fluxo End-to-End',
+    en: 'End-to-End Flow',
   },
   step1Label: {
     pt: 'Solicitação',
@@ -112,19 +112,7 @@ const L = {
   step7Text2: {
     pt: ' registradas (auditoria) em todo o fluxo.',
     en: ' recorded (audit) throughout the flow.',
-  },
-  noteText1: {
-    pt: 'Fluxo reutiliza as ',
-    en: 'The flow reuses the ',
-  },
-  noteZones: {
-    pt: 'mesmas zonas/cores',
-    en: 'same zones/colors',
-  },
-  noteText2: {
-    pt: ' do diagrama (Slide 12), reforçando clareza de diagramação.',
-    en: ' of the diagram (Slide 12), reinforcing clarity of the layout.',
-  },
+  }
 };
 
 export const Slide19_Fluxo: React.FC = () => {
@@ -146,9 +134,6 @@ export const Slide19_Fluxo: React.FC = () => {
           <li><strong>{L.step6Label[lang]}</strong>{L.step6Text[lang]}</li>
           <li><strong>{L.step7Label[lang]}</strong>{L.step7Text1[lang]}<strong>{L.step7Trilhas[lang]}</strong>{L.step7Text2[lang]}</li>
         </ol>
-        <p style={{ color: 'var(--muted)', fontSize: 'clamp(11px,1.4vw,16px)' }}>
-          {L.noteText1[lang]}<strong>{L.noteZones[lang]}</strong>{L.noteText2[lang]}
-        </p>
         </div>
       </div>
     </SlideShell>

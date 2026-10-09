@@ -17,18 +17,14 @@ const L = {
     pt: 'Proposta de Arquitetura para Abertura de Contas 100% Digital',
     en: 'Architecture Proposal for 100% Digital Account Opening',
   },
-  discipline: {
-    pt: 'Disciplina: Fundamentos de Redes de Computadores e Cloud Computing',
-    en: 'Course: Fundamentals of Computer Networks and Cloud Computing',
-  },
   teacher: {
-    pt: 'Professor: Rodrigo Petcov',
-    en: 'Professor: Rodrigo Petcov',
+    pt: 'Professores: Rodrigo Petcov e Leonardo Orabona',
+    en: 'Teachers: Rodrigo Petcov and Leonardo Orabona',
   },
-  course: {
-    pt: 'Curso Livre [iTalents]',
-    en: 'Open Course [iTalents]',
-  },
+  student: {
+    pt: 'Estudante: Christian Sperb',
+    en: 'Student: Christian Sperb',
+  }
 };
 
 export const Slide01_Capa: React.FC = () => {
@@ -50,13 +46,10 @@ export const Slide01_Capa: React.FC = () => {
         </div>
         <div style={{ marginTop: '1.6vw', display: 'flex', flexDirection: 'column', gap: '0.8vw' }}>
           <p style={{ margin: 0, fontSize: 'clamp(12px, 1.6vw, 18px)' }}>
-            {L.discipline[lang]}
-          </p>
-          <p style={{ margin: 0, fontSize: 'clamp(12px, 1.6vw, 18px)' }}>
             {L.teacher[lang]}
           </p>
           <p style={{ margin: 0, fontSize: 'clamp(12px, 1.6vw, 18px)' }}>
-            {L.course[lang]}
+            {L.student[lang]}
           </p>
         </div>
       </div>

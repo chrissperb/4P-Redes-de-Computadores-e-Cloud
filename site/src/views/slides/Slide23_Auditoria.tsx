@@ -5,11 +5,11 @@ import { useI18n } from '../../i18n/context';
 
 const L = {
   heading: {
-    pt: 'Auditoria, Monitoração e Rastreabilidade (Req. 5)',
-    en: 'Auditing, Monitoring and Traceability (Req. 5)',
+    pt: 'Auditoria, Monitoração e Rastreabilidade',
+    en: 'Auditing, Monitoring and Traceability',
   },
   intro: {
-    pt: <>Conforme Unid. III, pp. 25–26: <em>auditoria</em> simplifica gestão de risco/conformidade; <em>monitoração</em> analisa disponibilidade/desempenho via ferramentas manuais/automatizadas.</>,
+    pt: <>Conforme Unidade III, pp. 25–26: <em>auditoria</em> simplifica gestão de risco/conformidade; <em>monitoração</em> analisa disponibilidade/desempenho via ferramentas manuais/automatizadas.</>,
     en: <>As per Unit III, pp. 25–26: <em>auditing</em> simplifies risk/compliance management; <em>monitoring</em> analyzes availability/performance through manual/automated tools.</>,
   },
   liAudit: {
