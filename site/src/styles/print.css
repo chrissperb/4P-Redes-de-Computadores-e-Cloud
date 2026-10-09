@@ -42,6 +42,12 @@
     animation: none;
   }
 
+  .slide-header,
+  .slide-content,
+  .slide-footer {
+    animation: none !important;
+  }
+
   .slide:last-child {
     page-break-after: avoid;
   }

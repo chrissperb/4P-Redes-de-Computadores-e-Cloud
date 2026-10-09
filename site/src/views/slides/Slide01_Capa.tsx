@@ -17,6 +17,10 @@ const L = {
     pt: 'Proposta de Arquitetura para Abertura de Contas 100% Digital',
     en: 'Architecture Proposal for 100% Digital Account Opening',
   },
+  discipline: {
+    pt: 'Disciplina: Fundamentos de Redes de Computadores e Cloud Computing',
+    en: 'Course: Computer Networks Fundamentals and Cloud Computing',
+  },
   teacher: {
     pt: 'Professores: Rodrigo Petcov e Leonardo Orabona',
     en: 'Teachers: Rodrigo Petcov and Leonardo Orabona',
@@ -45,6 +49,9 @@ export const Slide01_Capa: React.FC = () => {
           <BrandRow height={44} />
         </div>
         <div style={{ marginTop: '1.6vw', display: 'flex', flexDirection: 'column', gap: '0.8vw' }}>
+          <p style={{ margin: 0, fontSize: 'clamp(12px, 1.6vw, 18px)' }}>
+            {L.discipline[lang]}
+          </p>
           <p style={{ margin: 0, fontSize: 'clamp(12px, 1.6vw, 18px)' }}>
             {L.teacher[lang]}
           </p>
