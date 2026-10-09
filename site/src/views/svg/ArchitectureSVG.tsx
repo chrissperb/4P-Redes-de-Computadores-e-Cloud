@@ -140,15 +140,15 @@ export const ArchitectureSVG: React.FC = () => {
 
       {/* Core Onboarding Zone */}
       <g className="zone" data-zone="3" role="group" aria-label={architectureZones[2].title[lang]}>
-        <rect x="950" y="150" width="280" height="220" rx="8" fill="#f3e8ff" stroke="#8b5cf6" strokeWidth="2" />
+        <rect x="950" y="150" width="280" height="220" rx="8" fill="#ccfbf1" stroke="#14b8a6" strokeWidth="2" />
         <text x="1090" y="185" textAnchor="middle" fontSize="16" fontWeight="600">
           {architectureZones[2].label} {architectureZones[2].title[lang]}
         </text>
-        <rect x="970" y="200" width="240" height="50" rx="6" fill="#e9d5ff" stroke="#a78bfa" strokeWidth="1.2" />
+        <rect x="970" y="200" width="240" height="50" rx="6" fill="#a7f3d0" stroke="#2dd4bf" strokeWidth="1.2" />
         <text x="1090" y="230" textAnchor="middle" fontSize="13">
           API Gateway
         </text>
-        <rect x="970" y="265" width="240" height="50" rx="6" fill="#e9d5ff" stroke="#a78bfa" strokeWidth="1.2" />
+        <rect x="970" y="265" width="240" height="50" rx="6" fill="#a7f3d0" stroke="#2dd4bf" strokeWidth="1.2" />
         <text x="1090" y="295" textAnchor="middle" fontSize="13">
           Step Functions / Lambda / ECS
         </text>
@@ -195,19 +195,19 @@ export const ArchitectureSVG: React.FC = () => {
 
       {/* Client Channel Zone */}
       <g className="zone" data-zone="6" role="group" aria-label={architectureZones[5].title[lang]}>
-        <rect x="1250" y="150" width="280" height="220" rx="8" fill="#ccfbf1" stroke="#14b8a6" strokeWidth="2" />
+        <rect x="1250" y="150" width="280" height="220" rx="8" fill="#ecfeff" stroke="#06b6d4" strokeWidth="2" />
         <text x="1390" y="185" textAnchor="middle" fontSize="16" fontWeight="600">
           {architectureZones[5].label} {architectureZones[5].title[lang]}
         </text>
-        <rect x="1270" y="200" width="240" height="45" rx="6" fill="#a7f3d0" stroke="#2dd4bf" strokeWidth="1.2" />
+        <rect x="1270" y="200" width="240" height="45" rx="6" fill="#cffafe" stroke="#22d3ee" strokeWidth="1.2" />
         <text x="1390" y="227" textAnchor="middle" fontSize="13">
           Route 53 / CloudFront
         </text>
-        <rect x="1270" y="255" width="240" height="45" rx="6" fill="#a7f3d0" stroke="#2dd4bf" strokeWidth="1.2" />
+        <rect x="1270" y="255" width="240" height="45" rx="6" fill="#cffafe" stroke="#22d3ee" strokeWidth="1.2" />
         <text x="1390" y="282" textAnchor="middle" fontSize="13">
           AWS WAF
         </text>
-        <rect x="1270" y="310" width="240" height="45" rx="6" fill="#a7f3d0" stroke="#2dd4bf" strokeWidth="1.2" />
+        <rect x="1270" y="310" width="240" height="45" rx="6" fill="#cffafe" stroke="#22d3ee" strokeWidth="1.2" />
         <text x="1390" y="337" textAnchor="middle" fontSize="13">
           Amazon Cognito + MFA
         </text>
@@ -216,7 +216,7 @@ export const ArchitectureSVG: React.FC = () => {
 
       {/* Connectors */}
       <g strokeWidth="2.5" fill="none">
-        <path d="M 920 390 L 950 260" stroke="#8b5cf6" markerEnd="url(#arrow)" vectorEffect="non-scaling-stroke" />
+        <path d="M 920 390 L 950 260" stroke="#14b8a6" markerEnd="url(#arrow)" vectorEffect="non-scaling-stroke" />
         <path d="M 920 390 L 950 540" stroke="#10b981" markerEnd="url(#arrow)" vectorEffect="non-scaling-stroke" />
         <path d="M 1230 540 L 1250 480" stroke="#f59e0b" markerEnd="url(#arrow)" vectorEffect="non-scaling-stroke" />
         <path d="M 1230 260 L 1250 260" stroke="#14b8a6" markerEnd="url(#arrow)" vectorEffect="non-scaling-stroke" />

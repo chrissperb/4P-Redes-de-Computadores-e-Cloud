@@ -17,8 +17,8 @@ export const CloudHybridIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) 
       <path d="M108 62h24v-6l10 8-10 8v-6h-24z" fill="#374151" />
       <text x="46" y="52" fontSize="11" fontWeight="600" fill="#1e40af">On-Premise</text>
       <text x="150" y="52" fontSize="11" fontWeight="600" fill="#065f46">{CloudHybridL.public[lang]}</text>
-      <text x="86" y="98" fontSize="10" fill="#6b7280">{CloudHybridL.sapAgencies[lang]}</text>
-      <text x="168" y="98" fontSize="10" fill="#6b7280">{CloudHybridL.awsOpen[lang]}</text>
+      <text x="86" y="98" fontSize="12" fill="#6b7280">{CloudHybridL.sapAgencies[lang]}</text>
+      <text x="168" y="98" fontSize="12" fill="#6b7280">{CloudHybridL.awsOpen[lang]}</text>
     </svg>
   );
 };
@@ -57,9 +57,9 @@ export const FlowDiagramIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) 
           <path d="M0 0 L10 5 L0 10 Z" fill="#374151" />
         </marker>
       </defs>
-      <text x="44" y="74" fontSize="10" textAnchor="middle" fill="#134e4a">{FlowL.requests[lang]}</text>
-      <text x="120" y="74" fontSize="10" textAnchor="middle" fill="#1e40af">{FlowL.orchestrates[lang]}</text>
-      <text x="196" y="74" fontSize="10" textAnchor="middle" fill="#14532d">{FlowL.persists[lang]}</text>
+      <text x="44" y="74" fontSize="12" textAnchor="middle" fill="#134e4a">{FlowL.requests[lang]}</text>
+      <text x="120" y="74" fontSize="12" textAnchor="middle" fill="#1e40af">{FlowL.orchestrates[lang]}</text>
+      <text x="196" y="74" fontSize="12" textAnchor="middle" fill="#14532d">{FlowL.persists[lang]}</text>
     </svg>
   );
 };
